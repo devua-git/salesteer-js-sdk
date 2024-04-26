@@ -1,0 +1,4 @@
+{
+    "typescript.preferences.importModuleSpecifier": "relative",
+    "eslint.experimental.useFlatConfig": false
+}

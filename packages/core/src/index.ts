@@ -34,3 +34,5 @@ export type { Country } from './resources/tenant/country/country.types'
 export type { State } from './resources/tenant/state/state.types'
 export type { Province } from './resources/tenant/province/province.types'
 export type { City } from './resources/tenant/city/city.types'
+
+export type { User } from './resources/tenant/user/user.types'

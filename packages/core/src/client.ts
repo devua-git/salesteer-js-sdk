@@ -31,6 +31,7 @@ export class SalesteerClient {
 
   constructor(config?: SalesteerClientConfigs) {
     this.#http = new HttpClient({
+      endpoint: config?.endpoint,
       clientType: config?.clientType,
       tenantDomain: config?.tenantDomain,
     })

@@ -1,0 +1,34 @@
+{
+  "name": "@salesteer/core",
+  "version": "0.0.1",
+  "type": "module",
+  "types": "build/legacy/index.d.ts",
+  "main": "build/legacy/index.cjs",
+  "module": "build/legacy/index.js",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./build/modern/index.d.ts",
+        "default": "./build/modern/index.js"
+      },
+      "require": {
+        "types": "./build/modern/index.d.cts",
+        "default": "./build/modern/index.cjs"
+      }
+    },
+    "./package.json": "./package.json"
+  },
+  "sideEffects": false,
+  "scripts": {
+    "clean": "rimraf ./build",
+    "build": "tsup"
+  },
+  "dependencies": {
+    "axios": "^1.6.x",
+    "zod": "^3.23"
+  },
+  "devDependencies": {
+    "axios": "^1.6.8",
+    "date-fns": "^3.6.0"
+  }
+}

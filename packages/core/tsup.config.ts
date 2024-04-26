@@ -1,7 +1,8 @@
 // @ts-check
 
 import { defineConfig } from 'tsup'
-import { legacyConfig, modernConfig } from './scripts/getTsupConfig.js'
+// eslint-disable-next-line import/no-relative-packages
+import { legacyConfig, modernConfig } from '../../scripts/getTsupConfig.js'
 
 export default defineConfig([
   modernConfig({

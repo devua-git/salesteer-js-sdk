@@ -1,0 +1,47 @@
+{
+  "name": "@salesteer/vue",
+  "version": "0.0.1",
+  "private": false,
+  "type": "module",
+	"main": "dist/index.cjs",
+	"module": "dist/index.mjs",
+	"exports": {
+		".": {
+			"types": "./types/index.d.ts",
+			"import": "./dist/index.mjs",
+			"require": "./dist/index.cjs"
+		},
+		"./*": "./*"
+	},
+	"typings": "types/index.d.ts",
+	"files": [
+		"dist",
+		"src",
+		"types",
+		"README.md"
+	],
+  "scripts": {
+    "clean": "rimraf ./build",
+		"build": "pnpm build-lib && pnpm build-types",
+		"build-lib": "vite build",
+		"build-types": "vue-tsc --emitDeclarationOnly --declaration"
+  },
+  "dependencies": {
+    "@salesteer/core": "workspace:*",
+    "@tanstack/query-persist-client-core": "^5.32.0",
+    "@tanstack/query-sync-storage-persister": "^5.32.0",
+    "@tanstack/vue-query": "^5.32.0",
+    "vue": "^3.4.25"
+  },
+  "devDependencies": {
+    "@tanstack/eslint-plugin-query": "^5.28.11",
+    "@vue/compiler-sfc": "^3.4.25",
+    "@vue/eslint-config-prettier": "^9.0.0",
+    "@vue/eslint-config-typescript": "^13.0.0",
+    "vue-tsc": "^2.0.14",
+		"@vue/tsconfig": "^0.5.1",
+		"@vitejs/plugin-vue": "^5.0.4",
+		"vitest": "^1.5.2",
+		"vite": "^5.2.10"
+  }
+}

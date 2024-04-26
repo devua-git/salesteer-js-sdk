@@ -1,4 +1,6 @@
 // @ts-check
+
+// @ts-expect-error error due to cjs file
 /** @type {import('eslint').Linter.Config} */
 const configs = {
   root: true,
@@ -28,7 +30,7 @@ const configs = {
   // no-undef because it is a setting for JS but not TS
   overrides: [
     {
-      files: ['*.ts'],
+      files: ['*.ts', '*.vue'],
       rules: {
         'no-undef': 'off',
       },
