@@ -5,6 +5,8 @@ dist
 build
 tmp
 /out-tsc
+.nuxt
+# .tsconfig.tsbuildinfo
 
 # dependencies
 node_modules
