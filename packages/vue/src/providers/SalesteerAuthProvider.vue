@@ -6,8 +6,10 @@
 import { computed, provide, reactive, ref, watch } from 'vue'
 import type { User } from '@salesteer/core'
 import { useSalesteerQueryClient } from '../hooks/useSalesteerQueryClient'
-import type { AuthContextPayload } from '../hooks/useSalesteerAuth'
-import { SALESTEER_AUTH_KEY } from '../hooks/useSalesteerAuth'
+import {
+  SALESTEER_AUTH_KEY,
+  type AuthContextPayload,
+} from '../types/auth.types'
 
 const client = useSalesteerQueryClient()
 const meQuery = reactive(client.user.useMe())

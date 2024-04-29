@@ -26,11 +26,12 @@ export default defineConfig({
     },
     minify: false,
     rollupOptions: {
-      external: ['vue'],
+      external: ['vue', 'pinia'],
       output: {
         exports: 'named',
         globals: {
           vue: 'Vue',
+          pinia: 'pinia',
         },
       },
     },

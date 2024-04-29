@@ -3,28 +3,28 @@
   "version": "0.0.1",
   "private": false,
   "type": "module",
-	"main": "dist/index.cjs",
-	"module": "dist/index.mjs",
-	"exports": {
-		".": {
-			"types": "./types/index.d.ts",
-			"import": "./dist/index.mjs",
-			"require": "./dist/index.cjs"
-		},
-		"./*": "./*"
-	},
-	"typings": "types/index.d.ts",
-	"files": [
-		"dist",
-		"src",
-		"types",
-		"README.md"
-	],
+  "main": "dist/index.cjs",
+  "module": "dist/index.mjs",
+  "exports": {
+    ".": {
+      "types": "./dist/types/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    },
+    "./*": "./*"
+  },
+  "typings": "./dist/types/index.d.ts",
+  "files": [
+    "dist",
+    "src",
+    "types",
+    "README.md"
+  ],
   "scripts": {
-    "clean": "rimraf ./build",
-		"build": "pnpm build-lib && pnpm build-types",
-		"build-lib": "vite build",
-		"build-types": "vue-tsc --emitDeclarationOnly --declaration"
+    "clean": "rimraf ./dist",
+    "build": "pnpm build-lib && pnpm build-types",
+    "build-lib": "vite build",
+    "build-types": "vue-tsc --declaration --emitDeclarationOnly"
   },
   "dependencies": {
     "@salesteer/core": "workspace:*",
@@ -35,13 +35,15 @@
   },
   "devDependencies": {
     "@tanstack/eslint-plugin-query": "^5.28.11",
+    "@vitejs/plugin-vue": "^5.0.4",
     "@vue/compiler-sfc": "^3.4.25",
     "@vue/eslint-config-prettier": "^9.0.0",
     "@vue/eslint-config-typescript": "^13.0.0",
-    "vue-tsc": "^2.0.14",
-		"@vue/tsconfig": "^0.5.1",
-		"@vitejs/plugin-vue": "^5.0.4",
-		"vitest": "^1.5.2",
-		"vite": "^5.2.10"
+    "@vue/tsconfig": "^0.5.1",
+    "pinia": "^2.1.7",
+    "pinia-plugin-persistedstate": "^3.2.1",
+    "vite": "^5.2.10",
+    "vitest": "^1.5.2",
+    "vue-tsc": "^2.0.14"
   }
 }

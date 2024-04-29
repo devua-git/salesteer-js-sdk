@@ -20,7 +20,7 @@
   },
   "sideEffects": false,
   "scripts": {
-    "clean": "rimraf ./build",
+    "clean": "rimraf ./dist",
     "build": "tsup"
   },
   "dependencies": {
