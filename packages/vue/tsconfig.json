@@ -12,6 +12,7 @@
     // "resolvePackageJsonExports": false
     "composite": true,
     "outDir": "dist",
+    "tsBuildInfoFile": "dist/tsconfig.tsbuildinfo",
     "declarationDir": "dist/types",
     "allowJs": true,
     "baseUrl": ".",

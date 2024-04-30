@@ -2,7 +2,7 @@ import { defineStore } from 'pinia'
 import type { User } from '@salesteer/core'
 import type { AuthContextPayload } from '../types/auth.types'
 
-export const useAuthStore = defineStore('salesteer-sdk-auth', {
+export const useSalesteerAuthStore = defineStore('salesteer-sdk-auth', {
   state: (): AuthContextPayload => ({
     isSignedIn: false,
     user: null,

@@ -39,6 +39,13 @@ export const userSchema = z
   .and(objectWithSoftDelete)
 export type User = z.infer<typeof userSchema>
 
+export const signInSchema = userSchema.or(
+  z.object({
+    user: userSchema,
+    token: z.string(),
+  })
+)
+
 export interface UserRegisterRequest {
   name: string
   email: string

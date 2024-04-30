@@ -1,4 +1,4 @@
-import type { InjectionKey } from 'vue'
+import type { InjectionKey, Ref } from 'vue'
 import type { User } from '@salesteer/core'
 
 export type SignedInPayload = {
@@ -11,9 +11,9 @@ export type SignedOutPayload = {
 }
 export type AuthContextPayload = SignedInPayload | SignedOutPayload
 
-export const SALESTEER_AUTH_KEY: InjectionKey<AuthContextPayload> =
+export const SALESTEER_AUTH_KEY: InjectionKey<Ref<AuthContextPayload>> =
   Symbol('SALESTEER_AUTH_KEY')
 
-export const SALESTEER_AUTH_USER_KEY: InjectionKey<User> = Symbol(
+export const SALESTEER_AUTH_USER_KEY: InjectionKey<Ref<User>> = Symbol(
   'SALESTEER_AUTH_USER_KEY'
 )

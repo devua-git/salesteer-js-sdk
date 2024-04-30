@@ -13,6 +13,5 @@
 import { useSalesteerAuth } from '..'
 import SalesteerAuthenticatedUserProvider from './SalesteerAuthenticatedUserProvider.vue'
 
-console.log('sdqdaad')
 const auth = useSalesteerAuth()
 </script>

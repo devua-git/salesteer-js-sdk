@@ -1,5 +1,5 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/vue-query'
-import { reactive } from 'vue'
+import { reactive, type Ref } from 'vue'
 import { BaseResourceQueries } from '../../resource-queries'
 import { QUERY_PREFIX } from '../../client'
 
@@ -7,7 +7,10 @@ export class UserQueries extends BaseResourceQueries {
   static keys = {
     all: () => [QUERY_PREFIX, 'users'] as const,
     me: () => [...this.keys.all(), 'me'] as const,
+
     managedCustomers: () => [...this.keys.all(), 'managedCustomers'] as const,
+    managedCustomer: (params: unknown) =>
+      [...this.keys.managedCustomers(), params] as const,
   } as const
 
   useMe = () => {
@@ -17,10 +20,10 @@ export class UserQueries extends BaseResourceQueries {
     })
   }
 
-  useManagedCustomers = () => {
+  useManagedCustomers = (userId: Ref<number>) => {
     return useQuery({
-      queryKey: UserQueries.keys.managedCustomers(),
-      queryFn: () => this.getClient().user.managedCustomers(),
+      queryKey: UserQueries.keys.managedCustomer(userId),
+      queryFn: () => this.getClient().user.managedCustomers(userId.value),
     })
   }
 

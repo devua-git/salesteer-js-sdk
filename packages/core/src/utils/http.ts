@@ -46,6 +46,8 @@ export class HttpClient {
   #clientType: 'spa' | 'api'
   #tenantDomain?: string
 
+  #token?: string
+
   constructor(configs?: HttpClientConfigs) {
     this.#endpoint = configs?.endpoint ?? PRODUCTION_ENDPOINT
     this.#clientType = configs?.clientType ?? 'api'
@@ -85,6 +87,11 @@ export class HttpClient {
         ) {
           await this.#setCSRFToken()
         }
+
+        if (config?.headers && this.#clientType === 'api' && this.#token) {
+          config.headers['Authorization'] = `Bearer ${this.#token}`
+        }
+
         return config
       },
       (error) => Promise.reject(error)
@@ -136,6 +143,10 @@ export class HttpClient {
 
   #setCSRFToken = async () => {
     await this.#instance.get(this.#buildUrl('csrf-cookie'))
+  }
+
+  setBearer = (token?: string) => {
+    this.#token = token
   }
 
   get = <R = unknown, C = unknown>(url: string, config?: HttpConfig<C>) => {

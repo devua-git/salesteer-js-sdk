@@ -2,7 +2,7 @@ import { z } from 'zod'
 import { BaseResource } from '../../../resource'
 import { parseWithFallbackAsync } from '../../../utils/validation'
 import { userManagedCustomerSchema } from '../customer/customer.types'
-import { userSchema } from './user.types'
+import { signInSchema, userSchema } from './user.types'
 import type {
   UserRegisterRequest,
   UserPasswordResetRequest,
@@ -16,8 +16,8 @@ export class UserResource extends BaseResource {
     return await parseWithFallbackAsync(userSchema, res.data)
   }
 
-  managedCustomers = async () => {
-    const res = await this.getHttp().get('user/customers')
+  managedCustomers = async (userId: number) => {
+    const res = await this.getHttp().get(`user/${userId}/customers`)
     return await parseWithFallbackAsync(
       z.array(userManagedCustomerSchema),
       res.data
@@ -31,11 +31,20 @@ export class UserResource extends BaseResource {
 
   signIn = async (data: UserSignInRequest) => {
     const res = await this.getHttp().post('sign-in', data)
-    return parseWithFallbackAsync(userSchema, res.data)
+
+    const resData = await parseWithFallbackAsync(signInSchema, res.data)
+
+    if ('token' in resData) {
+      this.getHttp().setBearer(resData.token)
+      return resData.user
+    }
+
+    return resData
   }
 
   signOut = async () => {
     await this.getHttp().post('sign-out', {})
+    this.getHttp().setBearer()
   }
 
   passwordReset = async (data: UserPasswordResetRequest) => {

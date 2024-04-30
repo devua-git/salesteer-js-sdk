@@ -10,8 +10,10 @@ import {
   SALESTEER_AUTH_KEY,
   type AuthContextPayload,
 } from '../types/auth.types'
+import { useSalesteerAuthStore } from '..'
 
 const client = useSalesteerQueryClient()
+const store = useSalesteerAuthStore()
 const meQuery = reactive(client.user.useMe())
 
 const user = ref<User | null>(null)
@@ -26,19 +28,20 @@ watch(meQuery, (query) => {
 })
 
 const context = computed<AuthContextPayload>(() => {
-  console.log('contextAuth')
   if (user.value != null) {
+    store.signIn(user.value)
     return {
       user: user.value,
       isSignedIn: true,
     }
   }
 
+  store.signOut()
   return {
     user: null,
     isSignedIn: false,
   }
 })
 
-provide(SALESTEER_AUTH_KEY, context.value)
+provide(SALESTEER_AUTH_KEY, context)
 </script>

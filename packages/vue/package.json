@@ -15,9 +15,12 @@
   },
   "typings": "./dist/types/index.d.ts",
   "files": [
-    "dist",
-    "src",
-    "types",
+    "dist/**/**",
+    "docs/**/**",
+    "!**/*.spec.*",
+    "!**/*.json",
+    "!**/*.tsbuildinfo",
+    "LICENSE",
     "README.md"
   ],
   "scripts": {
