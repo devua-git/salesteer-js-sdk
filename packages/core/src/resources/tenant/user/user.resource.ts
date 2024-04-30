@@ -43,8 +43,11 @@ export class UserResource extends BaseResource {
   }
 
   signOut = async () => {
-    await this.getHttp().post('sign-out', {})
-    this.getHttp().setBearer()
+    if (this.getHttp().getClientType() === 'spa') {
+      await this.getHttp().post('sign-out', {})
+    } else {
+      this.getHttp().setBearer()
+    }
   }
 
   passwordReset = async (data: UserPasswordResetRequest) => {

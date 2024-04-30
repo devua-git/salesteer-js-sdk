@@ -149,6 +149,10 @@ export class HttpClient {
     this.#token = token
   }
 
+  getClientType = () => {
+    return this.#clientType
+  }
+
   get = <R = unknown, C = unknown>(url: string, config?: HttpConfig<C>) => {
     return this.#instance.get<R, AxiosResponse<R, C>, C>(
       this.#buildUrl(url, config?.pathType),

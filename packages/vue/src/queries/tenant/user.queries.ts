@@ -56,7 +56,7 @@ export class UserQueries extends BaseResourceQueries {
     return reactive(
       useMutation({
         mutationFn: this.getClient().user.signOut,
-        onSuccess: () => {
+        onSettled: () => {
           queryClient.invalidateQueries({
             queryKey: UserQueries.keys.me(),
           })
