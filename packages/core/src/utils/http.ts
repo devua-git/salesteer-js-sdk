@@ -3,6 +3,7 @@ import axios from 'axios'
 import { getCookie } from './cookies'
 
 const PRODUCTION_ENDPOINT = 'https://api.salesteer.com'
+const TOKEN_STORAGE_KEY = 'salesteer-auth-token'
 
 export type PathType = 'endpoint' | 'central' | 'tenantSpa' | 'tenantApi'
 
@@ -52,6 +53,8 @@ export class HttpClient {
     this.#endpoint = configs?.endpoint ?? PRODUCTION_ENDPOINT
     this.#clientType = configs?.clientType ?? 'api'
     this.#tenantDomain = configs?.tenantDomain
+
+    this.#token = localStorage.getItem(TOKEN_STORAGE_KEY) ?? undefined
 
     this.#instance = axios.create({
       timeout: 30000,
@@ -147,6 +150,11 @@ export class HttpClient {
 
   setBearer = (token?: string) => {
     this.#token = token
+    if (token) {
+      localStorage.setItem(TOKEN_STORAGE_KEY, token)
+    } else {
+      localStorage.removeItem(TOKEN_STORAGE_KEY)
+    }
   }
 
   getClientType = () => {

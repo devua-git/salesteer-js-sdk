@@ -5,7 +5,7 @@ export const imageSchema = z.object({
   id: z.coerce.number(),
   path: z.string(),
   imageable_type: zodEntityName.nullable(),
-  imageable_id: z.number(),
+  imageable_id: z.coerce.number(),
   url: z.string(),
   type: z.string().nullable(),
 })

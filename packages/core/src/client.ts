@@ -8,6 +8,7 @@ import { CountryResource } from './resources/tenant/country/country.resource'
 import { StateResource } from './resources/tenant/state/state.resource'
 import { ProvinceResource } from './resources/tenant/province/province.resource'
 import { CityResource } from './resources/tenant/city/city.resource'
+import { CartResource } from './resources/tenant/cart/cart.resource'
 
 export type SalesteerClientConfigs = {
   endpoint?: string
@@ -23,6 +24,8 @@ export class SalesteerClient {
   public place: PlaceResource
   public product: ProductResource
   public productList: ProductListResource
+
+  public cart: CartResource
 
   public city: CityResource
   public state: StateResource
@@ -41,6 +44,8 @@ export class SalesteerClient {
     this.place = new PlaceResource(this)
     this.product = new ProductResource(this)
     this.productList = new ProductListResource(this)
+
+    this.cart = new CartResource(this)
 
     this.city = new CityResource(this)
     this.state = new StateResource(this)

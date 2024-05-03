@@ -36,3 +36,5 @@ export type { Province } from './resources/tenant/province/province.types'
 export type { City } from './resources/tenant/city/city.types'
 
 export type { User } from './resources/tenant/user/user.types'
+
+export type { Cart, CartSyncRequest } from './resources/tenant/cart/cart.types'

@@ -8,7 +8,7 @@ import { customerSchema } from '../customer/customer.types'
 
 export const productListSchema = z
   .object({
-    id: z.number(),
+    id: z.coerce.number(),
     title: z.string(),
 
     hashed_id: z.string(),

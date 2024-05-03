@@ -10,13 +10,13 @@ import { containsAddressSchema } from '../address/address.types'
 
 export const placeSchema = z
   .object({
-    id: z.number(),
+    id: z.coerce.number(),
 
-    placeable_id: z.number(),
+    placeable_id: z.coerce.number(),
     placeable_type: zodEntityName,
 
     legal_office: z.coerce.boolean(),
-    description: z.string(),
+    description: z.string().nullable(),
 
     contacts: z.array(entityContactSchema),
   })
@@ -28,7 +28,7 @@ export const placePaginateSchema = makePaginateSchema(placeSchema)
 export type PaginatedPlaceList = z.infer<typeof placePaginateSchema>
 
 export const placeableEntitySchema = z.object({
-  id: z.number(),
+  id: z.coerce.number(),
   legal_office: placeSchema.nullish(),
   places: z.array(placeSchema).optional(),
 })

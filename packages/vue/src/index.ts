@@ -47,4 +47,6 @@ export {
   type Province,
   type City,
   type User,
+  type Cart,
+  type CartSyncRequest,
 } from '@salesteer/core'

@@ -9,16 +9,16 @@ export const containsAddressSchema = z.object({
   line2: z.string().nullish(),
   postal_code: z.string().nullable(),
 
-  city_id: z.number().nullable(),
+  city_id: z.coerce.number().nullable(),
   city: citySchema.nullish(),
 
-  country_id: z.number().nullable(),
+  country_id: z.coerce.number().nullable(),
   country: countrySchema.nullish(),
 
-  state_id: z.number().nullable(),
+  state_id: z.coerce.number().nullable(),
   state: stateSchema.nullish(),
 
-  province_id: z.number().nullable(),
+  province_id: z.coerce.number().nullable(),
   province: provinceSchema.nullish(),
 
   is_valid_address: z.coerce.boolean(),

@@ -3,9 +3,9 @@ import { stateSchema } from '../state/state.types'
 import { makePaginateSchema } from '../../../utils/validation'
 
 export const provinceSchema = z.object({
-  id: z.number(),
+  id: z.coerce.number(),
   name: z.string(),
-  state_id: z.number(),
+  state_id: z.coerce.number(),
 
   state: stateSchema.optional(),
 })

@@ -34,7 +34,7 @@ export function getCustomerTypes(customer: Customer) {
 
 export const customerSchema = z
   .object({
-    id: z.number(),
+    id: z.coerce.number(),
 
     type: z.nativeEnum(CustomerType),
 
@@ -44,7 +44,7 @@ export const customerSchema = z
     sdi_code: z.string().nullable(),
     pec: z.string().nullable(),
     rank: z.coerce.number().nullable(),
-    average_satisfaction: z.number().nullish(),
+    average_satisfaction: z.coerce.number().nullish(),
     description: z.string().nullable(),
 
     //TODO
@@ -52,7 +52,7 @@ export const customerSchema = z
     // product_interests: z.array(productInterestSchema).optional(),
 
     //TODO
-    // acquire_type_id: z.number().nullable(),
+    // acquire_type_id: z.coerce.number().nullable(),
     // acquire_type: acquireTypeSchema.nullish(),
 
     can_be_dropped: z.coerce.boolean().optional(),

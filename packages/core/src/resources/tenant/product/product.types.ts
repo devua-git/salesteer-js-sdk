@@ -6,27 +6,27 @@ import { unitMeasureSchema } from '../unit-measure/unit-measure.types'
 import { makePaginateSchema } from '../../../utils/validation'
 
 export const productSchema = z.object({
-  id: z.number(),
+  id: z.coerce.number(),
 
   name: z.string(),
-  price: z.number(),
+  price: z.coerce.number(),
   description: z.string().nullable(),
   product_code: z.string().optional(),
   obsolete: z.coerce.boolean(),
 
   producer: z.string().nullish(),
   supplier: z.string().nullish(),
-  total_quantity: z.number().optional(),
+  total_quantity: z.coerce.number().optional(),
 
   image: imageSchema.nullish(),
 
-  vat_type_id: z.number(),
+  vat_type_id: z.coerce.number(),
   vat_type: vatTypeSchema,
 
-  product_category_id: z.number().nullish(),
+  product_category_id: z.coerce.number().nullish(),
   product_category: productCategorySchema.nullish(),
 
-  unit_measure_id: z.number(),
+  unit_measure_id: z.coerce.number(),
   unit_measure: unitMeasureSchema.optional(),
 
   metadata: z.record(z.string(), z.string()).nullable(),

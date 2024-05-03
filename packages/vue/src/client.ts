@@ -8,6 +8,7 @@ import { CityQueries } from './queries/tenant/city.queries'
 import { StateQueries } from './queries/tenant/state.queries'
 import { CountryQueries } from './queries/tenant/country.queries'
 import { ProvinceQueries } from './queries/tenant/province.queries'
+import { CartQueries } from './queries/tenant/cart.queries'
 
 export type SalesteerQueryClientConfigs = {
   client: SalesteerClient
@@ -24,6 +25,8 @@ export class SalesteerQueryClient {
   public product: ProductQueries
   public productList: ProductListQueries
 
+  public cart: CartQueries
+
   public city: CityQueries
   public state: StateQueries
   public country: CountryQueries
@@ -37,6 +40,8 @@ export class SalesteerQueryClient {
     this.place = new PlaceQueries(this)
     this.product = new ProductQueries(this)
     this.productList = new ProductListQueries(this)
+
+    this.cart = new CartQueries(this)
 
     this.city = new CityQueries(this)
     this.state = new StateQueries(this)
