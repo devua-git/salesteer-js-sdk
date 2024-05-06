@@ -25,7 +25,7 @@ export class CartQueries extends BaseResourceQueries {
     return reactive(
       useMutation({
         mutationFn: this.getClient().cart.create,
-        onSettled: (_, __, req) => {
+        onSuccess: (_, req) => {
           queryClient.invalidateQueries({
             queryKey: CartQueries.keys.byCustomer(req.customer_id),
           })
@@ -40,7 +40,7 @@ export class CartQueries extends BaseResourceQueries {
     return reactive(
       useMutation({
         mutationFn: this.getClient().cart.update,
-        onSettled: (_, __, req) => {
+        onSuccess: (_, req) => {
           queryClient.invalidateQueries({
             queryKey: CartQueries.keys.byCustomer(req.cart.customer_id),
           })
@@ -55,7 +55,7 @@ export class CartQueries extends BaseResourceQueries {
     return reactive(
       useMutation({
         mutationFn: this.getClient().cart.drop,
-        onSettled: (_, __, req) => {
+        onSuccess: (_, req) => {
           queryClient.invalidateQueries({
             queryKey: CartQueries.keys.byCustomer(req.customer_id),
           })
@@ -70,7 +70,7 @@ export class CartQueries extends BaseResourceQueries {
     return reactive(
       useMutation({
         mutationFn: this.getClient().cart.syncProducts,
-        onSettled: (_, __, req) => {
+        onSuccess: (_, req) => {
           queryClient.invalidateQueries({
             queryKey: CartQueries.keys.byCustomer(req.cart.customer_id),
           })

@@ -42,6 +42,7 @@ export {
   type PlaceUpdateRequest,
   type Product,
   type ProductList,
+  type ProductListProduct,
   type Country,
   type State,
   type Province,

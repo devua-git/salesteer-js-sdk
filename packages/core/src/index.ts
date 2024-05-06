@@ -28,7 +28,10 @@ export type {
   PlaceUpdateRequest,
 } from './resources/tenant/place/place.types'
 export type { Product } from './resources/tenant/product/product.types'
-export type { ProductList } from './resources/tenant/product-list/product-list.types'
+export type {
+  ProductList,
+  ProductListProduct,
+} from './resources/tenant/product-list/product-list.types'
 
 export type { Country } from './resources/tenant/country/country.types'
 export type { State } from './resources/tenant/state/state.types'

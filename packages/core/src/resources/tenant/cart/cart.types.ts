@@ -3,6 +3,7 @@ import {
   makePaginateSchema,
   objectWithTimestamps,
 } from '../../../utils/validation'
+import { imageSchema } from '../image/image.types'
 
 export const cartSchema = z
   .object({
@@ -15,8 +16,13 @@ export const cartSchema = z
 
     products: z.array(
       z.object({
-        product_id: z.coerce.number(),
+        id: z.coerce.number(),
+        name: z.string(),
+        description: z.string().nullable(),
+        net_amount: z.coerce.number(),
+        previous_amount: z.coerce.number().nullable(),
         quantity: z.coerce.number(),
+        image: imageSchema.nullish(),
       })
     ),
   })
