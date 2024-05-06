@@ -6,27 +6,73 @@ import { QUERY_PREFIX } from '../../client'
 export class CartQueries extends BaseResourceQueries {
   static keys = {
     all: () => [QUERY_PREFIX, 'carts'] as const,
-    details: () => [...this.keys.all(), 'detail'] as const,
-    detail: (params: unknown) => [...this.keys.details(), params] as const,
+    byCustomers: () => [...this.keys.all(), 'byCustomer'] as const,
+    byCustomer: (params: unknown) =>
+      [...this.keys.byCustomers(), params] as const,
   } as const
 
-  useFetch = (customerId: Ref<number>) => {
+  useCustomerCarts = (customerId: Ref<number>) => {
     return useQuery({
-      queryKey: CartQueries.keys.detail(customerId),
+      queryKey: CartQueries.keys.byCustomer(customerId),
       queryFn: () =>
-        this.getClient().cart.fetch({ customer_id: customerId.value }),
+        this.getClient().cart.customerCarts({ customer_id: customerId.value }),
     })
   }
 
-  useSync = () => {
+  useCreate = () => {
     const queryClient = useQueryClient()
 
     return reactive(
       useMutation({
-        mutationFn: this.getClient().cart.sync,
+        mutationFn: this.getClient().cart.create,
         onSettled: (_, __, req) => {
           queryClient.invalidateQueries({
-            queryKey: CartQueries.keys.detail(req.customer_id),
+            queryKey: CartQueries.keys.byCustomer(req.customer_id),
+          })
+        },
+      })
+    )
+  }
+
+  useUpdate = () => {
+    const queryClient = useQueryClient()
+
+    return reactive(
+      useMutation({
+        mutationFn: this.getClient().cart.update,
+        onSettled: (_, __, req) => {
+          queryClient.invalidateQueries({
+            queryKey: CartQueries.keys.byCustomer(req.cart.customer_id),
+          })
+        },
+      })
+    )
+  }
+
+  useDrop = () => {
+    const queryClient = useQueryClient()
+
+    return reactive(
+      useMutation({
+        mutationFn: this.getClient().cart.drop,
+        onSettled: (_, __, req) => {
+          queryClient.invalidateQueries({
+            queryKey: CartQueries.keys.byCustomer(req.customer_id),
+          })
+        },
+      })
+    )
+  }
+
+  useSyncProducts = () => {
+    const queryClient = useQueryClient()
+
+    return reactive(
+      useMutation({
+        mutationFn: this.getClient().cart.syncProducts,
+        onSettled: (_, __, req) => {
+          queryClient.invalidateQueries({
+            queryKey: CartQueries.keys.byCustomer(req.cart.customer_id),
           })
         },
       })
