@@ -11,6 +11,8 @@ export class ProductListQueries extends BaseResourceQueries {
     list: (params: unknown) => [...this.keys.lists(), params] as const,
     products: () => [...this.keys.all(), 'product'] as const,
     product: (params: unknown) => [...this.keys.products(), params] as const,
+    categories: () => [...this.keys.all(), 'category'] as const,
+    category: (params: unknown) => [...this.keys.categories(), params] as const,
   } as const
 
   useList = (params?: Ref<PaginateQueryParams>) => {
@@ -31,4 +33,13 @@ export class ProductListQueries extends BaseResourceQueries {
           }),
       })
   }
+
+  useCategories = (productListId: Ref<number>) =>
+    useQuery({
+      queryKey: ProductListQueries.keys.category(productListId),
+      queryFn: () =>
+        this.getClient().productList.categories({
+          productListId: productListId.value,
+        }),
+    })
 }

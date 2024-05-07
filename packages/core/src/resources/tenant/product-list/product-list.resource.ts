@@ -1,6 +1,7 @@
 import { BaseResource } from '../../../resource'
 import { parseWithFallbackAsync } from '../../../utils/validation'
 import type { PaginateQueryParams } from '../../../utils/pagination'
+import { categoryTreesResponseSchema } from '../product-category/product-category.types'
 import {
   productListPaginateSchema,
   productListProductPaginateSchema,
@@ -27,5 +28,13 @@ export class ProductListResource extends BaseResource {
     )
 
     return parseWithFallbackAsync(productListProductPaginateSchema, res.data)
+  }
+
+  categories = async (req: { productListId: number }) => {
+    const res = await this.getHttp().get(
+      `product-list/${req.productListId}/categories`
+    )
+
+    return parseWithFallbackAsync(categoryTreesResponseSchema, res.data)
   }
 }

@@ -32,6 +32,10 @@ export type {
   ProductList,
   ProductListProduct,
 } from './resources/tenant/product-list/product-list.types'
+export type {
+  ProductCategory,
+  ProductCategoryTreeNode,
+} from './resources/tenant/product-category/product-category.types'
 
 export type { Country } from './resources/tenant/country/country.types'
 export type { State } from './resources/tenant/state/state.types'

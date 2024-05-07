@@ -43,6 +43,8 @@ export {
   type Product,
   type ProductList,
   type ProductListProduct,
+  type ProductCategory,
+  type ProductCategoryTreeNode,
   type Country,
   type State,
   type Province,
