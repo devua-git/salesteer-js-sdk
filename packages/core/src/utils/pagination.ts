@@ -164,3 +164,143 @@ export type CursorPaginateResult<T> = {
   prev_cursor: string
   prev_page_url: string
 }
+
+export type FilterablesConfigType =
+  | 'string'
+  | 'number'
+  | 'boolean'
+  | 'date'
+  | 'select'
+
+export const queryFilterStringOperators = [
+  'eq',
+  'neq',
+  'contains',
+  'notContains',
+  'startsWith',
+  'notStartsWith',
+  'endsWith',
+  'notEndsWith',
+  'null',
+  'notNull',
+  'empty',
+  'notEmpty',
+] as const
+
+export type QueryFilterStringOperator =
+  (typeof queryFilterStringOperators)[number]
+
+export type FilterablesStringConfig = {
+  type: 'string'
+  defaultOperator?: QueryFilterStringOperator
+  defaultValue?: string
+}
+
+export const queryFilterNumberOperators = [
+  'eq',
+  'neq',
+  'lt',
+  'lte',
+  'gt',
+  'gte',
+  'between',
+  'notBetween',
+  'null',
+  'notNull',
+] as const
+
+export type QueryFilterNumberOperator =
+  (typeof queryFilterNumberOperators)[number]
+
+export type FilterablesNumberConfig = {
+  type: 'number'
+  defaultOperator?: QueryFilterNumberOperator
+  defaultValue?: number
+}
+
+export const queryFilterBooleanOperators = [
+  'true',
+  'false',
+  'null',
+  'notNull',
+] as const
+
+export type QueryFilterBooleanOperator =
+  (typeof queryFilterBooleanOperators)[number]
+
+export type FilterablesBooleanConfig = {
+  type: 'boolean'
+  defaultOperator?: QueryFilterBooleanOperator
+  defaultValue?: boolean
+}
+
+export const queryFilterDateOperators = [
+  'date',
+  'dateBefore',
+  'dateAfter',
+  'dateBetween',
+  'dateNotBetween',
+  'null',
+  'notNull',
+] as const
+
+export type QueryFilterDateOperator = (typeof queryFilterDateOperators)[number]
+
+export type FilterablesDateConfig = {
+  type: 'date'
+  defaultOperator?: QueryFilterDateOperator
+  defaultValue?: string
+}
+
+export const queryFilterSelectOperators = [
+  'eq',
+  'neq',
+  'in',
+  'notIn',
+  'null',
+  'notNull',
+] as const
+
+export type QueryFilterSelectOperator =
+  (typeof queryFilterSelectOperators)[number]
+
+export type QueryFilterSelectOption = { label: string; value: string | number }
+
+export type FilterablesSelectConfig = {
+  type: 'select'
+  defaultOperator?: QueryFilterSelectOperator
+  defaultValue?: string | number
+  options: QueryFilterSelectOption[]
+}
+
+export const queryFilterEntityOperators = [
+  'eq',
+  'neq',
+  'in',
+  'notIn',
+  'null',
+  'notNull',
+] as const
+
+export type QueryFilterEntityOperator =
+  (typeof queryFilterEntityOperators)[number]
+
+export type FilterablesConfig =
+  | FilterablesStringConfig
+  | FilterablesNumberConfig
+  | FilterablesBooleanConfig
+  | FilterablesDateConfig
+  | FilterablesSelectConfig
+
+export type FilterablesConfigs = Record<string, FilterablesConfig>
+
+export const defaultFilterOperators: Record<
+  FilterablesConfigType,
+  QueryFilterOperator
+> = {
+  string: 'contains',
+  number: 'eq',
+  boolean: 'true',
+  select: 'eq',
+  date: 'date',
+}

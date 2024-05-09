@@ -4,15 +4,15 @@
 export { SalesteerClient, type SalesteerClientConfigs } from './client'
 
 export { EntityName } from './utils/morphables'
-export {
-  type PaginateQueryParams,
-  type PaginateResult,
-  type QueryFilter,
-  isValidQueryFilter,
-  getValidQueryFilters,
-} from './utils/pagination'
+export * from './utils/pagination'
+export * from './utils/types'
 
-export { isHttpErrors } from './utils/http'
+export {
+  isHttpErrors,
+  type HttpErrors,
+  hasFieldErrors,
+  type HttpClientConfigs,
+} from './utils/http'
 
 export {
   type Customer,
