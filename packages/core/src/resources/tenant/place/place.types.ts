@@ -18,7 +18,7 @@ export const placeSchema = z
     legal_office: z.coerce.boolean(),
     description: z.string().nullable(),
 
-    contacts: z.array(entityContactSchema),
+    contacts: z.array(entityContactSchema).optional().default([]),
   })
   .merge(containsAddressSchema)
   .merge(objectWithTimestamps)

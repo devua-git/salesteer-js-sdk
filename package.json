@@ -1,38 +1,38 @@
 {
-    "name": "js-sdk",
-    "namespace": "@salesteer",
-    "private": true,
-    "packageManager": "pnpm@9.0.6",
-    "type": "module",
-    "version": "0.0.0",
-    "license": "MIT",
-    "scripts": {
-        "clean": "pnpm --filter \"./packages/**\" run clean",
-        "prepare": "husky",
-        "build": "nx affected --target=build --exclude=examples/**",
-        "build:all": "nx run-many --target=build --exclude=examples/**",
-        "watch": "pnpm run build:all && nx watch --all -- pnpm run build:all",
-        "dev": "pnpm run watch"
-    },
-    "dependencies": {},
-    "devDependencies": {
-      "@nx/js": "18.3.3",
-      "nx": "18.3.3",
-      "esbuild-plugin-file-path-extensions": "^2.0.0",
-      "eslint": "^8.57.0",
-      "eslint-config-prettier": "^9.1.0",
-      "eslint-import-resolver-typescript": "^3.6.1",
-      "eslint-plugin-import": "^2.29.1",
-      "eslint-plugin-prettier": "^5.1.3",
-      "husky": "^9.0.11",
-      "lint-staged": "^15.2.2",
-      "prettier": "^3.2.5",
-      "rimraf": "^5.0.5",
-      "tsup": "^8.0.2",
-      "typescript": "^5.4.5",
-      "typescript-eslint": "^7.7.1"
-    },
-    "workspaces": [
-      "packages/*"
-    ]
+  "name": "js-sdk",
+  "namespace": "@salesteer",
+  "private": true,
+  "packageManager": "pnpm@9.0.6",
+  "type": "module",
+  "version": "0.0.0",
+  "license": "MIT",
+  "scripts": {
+    "clean": "pnpm --filter \"./packages/**\" run clean",
+    "prepare": "husky",
+    "build": "nx reset && nx affected --target=build --exclude=examples/**",
+    "build:all": "nx run-many --target=build --exclude=examples/**",
+    "watch": "pnpm run build:all && nx watch --all -- pnpm run build:all",
+    "dev": "pnpm run watch"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@nx/js": "19.0.4",
+    "nx": "19.0.4",
+    "esbuild-plugin-file-path-extensions": "^2.1.0",
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-import-resolver-typescript": "^3.6.1",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-prettier": "^5.1.3",
+    "husky": "^9.0.11",
+    "lint-staged": "^15.2.2",
+    "prettier": "^3.2.5",
+    "rimraf": "^5.0.7",
+    "tsup": "^8.0.2",
+    "typescript": "^5.4.5",
+    "typescript-eslint": "^7.9.0"
+  },
+  "workspaces": [
+    "packages/*"
+  ]
 }

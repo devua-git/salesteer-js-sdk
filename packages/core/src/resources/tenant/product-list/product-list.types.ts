@@ -29,8 +29,7 @@ export type PaginatedProductList = z.infer<typeof productListPaginateSchema>
 
 export const productListProductSchema = productSchema.and(
   z.object({
-    net_amount: z.coerce.number(),
-    previous_amount: z.coerce.number().nullable(),
+    discounted_amount: z.coerce.number().nullable(),
     product_id: z.coerce.number(),
     product_list_id: z.coerce.number(),
   })

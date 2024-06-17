@@ -3,6 +3,7 @@ import { reactive, type Ref } from 'vue'
 import type { PaginateQueryParams } from '@salesteer/core'
 import { BaseResourceQueries } from '../../resource-queries'
 import { QUERY_PREFIX } from '../../client'
+import { UserQueries } from './user.queries'
 
 export class PlaceQueries extends BaseResourceQueries {
   static keys = {
@@ -26,6 +27,9 @@ export class PlaceQueries extends BaseResourceQueries {
         mutationFn: this.getClient().place.create,
         onSuccess: () => {
           queryClient.invalidateQueries({ queryKey: PlaceQueries.keys.lists() })
+          queryClient.invalidateQueries({
+            queryKey: UserQueries.keys.managedCustomers(),
+          })
 
           //TODO
           // queryClient.invalidateQueries({
@@ -47,6 +51,9 @@ export class PlaceQueries extends BaseResourceQueries {
         mutationFn: this.getClient().place.update,
         onSuccess: () => {
           queryClient.invalidateQueries({ queryKey: PlaceQueries.keys.lists() })
+          queryClient.invalidateQueries({
+            queryKey: UserQueries.keys.managedCustomers(),
+          })
 
           //TODO
           // queryClient.invalidateQueries({
@@ -68,6 +75,9 @@ export class PlaceQueries extends BaseResourceQueries {
         mutationFn: this.getClient().place.drop,
         onSuccess: () => {
           queryClient.invalidateQueries({ queryKey: PlaceQueries.keys.lists() })
+          queryClient.invalidateQueries({
+            queryKey: UserQueries.keys.managedCustomers(),
+          })
 
           //TODO
           // queryClient.invalidateQueries({

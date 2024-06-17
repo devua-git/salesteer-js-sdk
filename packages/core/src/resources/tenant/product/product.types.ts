@@ -1,6 +1,5 @@
 import { z } from 'zod'
 import { imageSchema } from '../image/image.types'
-import { vatTypeSchema } from '../vat-type/vat-type.types'
 import { productCategorySchema } from '../product-category/product-category.types'
 import { unitMeasureSchema } from '../unit-measure/unit-measure.types'
 import { makePaginateSchema } from '../../../utils/validation'
@@ -11,17 +10,16 @@ export const productSchema = z.object({
   name: z.string(),
   price: z.coerce.number(),
   description: z.string().nullable(),
-  product_code: z.string().optional(),
+  product_code: z.string().nullable(),
   obsolete: z.coerce.boolean(),
 
   producer: z.string().nullish(),
   supplier: z.string().nullish(),
-  total_quantity: z.coerce.number().optional(),
+  total_quantity: z.coerce.number().nullish(),
 
   image: imageSchema.nullish(),
 
-  vat_type_id: z.coerce.number(),
-  vat_type: vatTypeSchema,
+  taxes: z.array(z.unknown()),
 
   product_category_id: z.coerce.number().nullish(),
   product_category: productCategorySchema.nullish(),

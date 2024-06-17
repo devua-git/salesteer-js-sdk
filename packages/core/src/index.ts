@@ -45,3 +45,8 @@ export type { City } from './resources/tenant/city/city.types'
 export type { User } from './resources/tenant/user/user.types'
 
 export type { Cart, CartSyncRequest } from './resources/tenant/cart/cart.types'
+
+export type {
+  Rent,
+  RentProductDetail,
+} from './resources/tenant/rent/rent.types'

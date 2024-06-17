@@ -21,22 +21,22 @@ const user = ref<User | null>(null)
 watch(meQuery, (query) => {
   if (query.status == 'error') {
     user.value = null
+    store.signOut()
   }
   if (query.status == 'success') {
     user.value = query.data
+    store.signIn(user.value)
   }
 })
 
 const context = computed<AuthContextPayload>(() => {
   if (user.value != null) {
-    store.signIn(user.value)
     return {
       user: user.value,
       isSignedIn: true,
     }
   }
 
-  store.signOut()
   return {
     user: null,
     isSignedIn: false,
