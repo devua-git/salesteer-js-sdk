@@ -8,7 +8,8 @@ export class RentQueries extends BaseResourceQueries {
   static keys = {
     all: () => [QUERY_PREFIX, 'rents'] as const,
     details: () => [...this.keys.all(), 'detail'] as const,
-    detail: (id: number) => [...this.keys.all(), 'detail', id] as const,
+    detail: (params: unknown) =>
+      [...this.keys.all(), 'detail', params] as const,
     lists: () => [...this.keys.all(), 'lists'] as const,
     list: (params: unknown) => [this.keys.lists(), params] as const,
     availableProducts: (params: unknown) =>
@@ -24,10 +25,10 @@ export class RentQueries extends BaseResourceQueries {
     })
   }
 
-  detail = (id: number) => {
+  fetch = (id: Ref<number>) => {
     return useQuery({
       queryKey: RentQueries.keys.detail(id),
-      queryFn: () => this.getClient().rent.fetch(id),
+      queryFn: () => this.getClient().rent.fetch(id.value),
     })
   }
 
