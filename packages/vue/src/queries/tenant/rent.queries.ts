@@ -25,6 +25,18 @@ export class RentQueries extends BaseResourceQueries {
     })
   }
 
+  customerRents =
+    (customerId: Ref<number>) => (params?: Ref<PaginateQueryParams>) => {
+      return useQuery({
+        queryKey: RentQueries.keys.list([customerId, params]),
+        queryFn: () =>
+          this.getClient().rent.customerRents({
+            customerId: customerId.value,
+            params: params?.value,
+          }),
+      })
+    }
+
   fetch = (id: Ref<number>) => {
     return useQuery({
       queryKey: RentQueries.keys.detail(id),

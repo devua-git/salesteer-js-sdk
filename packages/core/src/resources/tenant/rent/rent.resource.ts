@@ -19,6 +19,17 @@ export class RentResource extends BaseResource {
     return parseWithFallbackAsync(rentPaginateSchema, res.data)
   }
 
+  customerRents = async (req: {
+    customerId: number
+    params?: PaginateQueryParams
+  }) => {
+    const res = await this.getHttp().get(`customer/${req.customerId}/rents`, {
+      params: req.params,
+    })
+
+    return parseWithFallbackAsync(rentPaginateSchema, res.data)
+  }
+
   fetch = async (id: number) => {
     const res = await this.getHttp().get(`rents/${id}`)
     return parseWithFallbackAsync(rentSchema, res.data)
