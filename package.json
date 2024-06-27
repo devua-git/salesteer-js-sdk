@@ -1,10 +1,11 @@
 {
-  "name": "js-sdk",
+  "name": "@salesteer/js-sdk",
   "namespace": "@salesteer",
+  "author": "",
   "private": true,
   "packageManager": "pnpm@9.0.6",
   "type": "module",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "license": "MIT",
   "scripts": {
     "clean": "pnpm --filter \"./packages/**\" run clean",
@@ -14,7 +15,6 @@
     "watch": "pnpm run build:all && nx watch --all -- pnpm run build:all",
     "dev": "pnpm run watch"
   },
-  "dependencies": {},
   "devDependencies": {
     "@nx/js": "19.0.4",
     "nx": "19.0.4",
@@ -34,5 +34,14 @@
   },
   "workspaces": [
     "packages/*"
-  ]
+  ],
+  "description": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/devua-git/salesteer-js-sdk.git"
+  },
+  "bugs": {
+    "url": "https://github.com/devua-git/salesteer-js-sdk/issues"
+  },
+  "homepage": "https://github.com/devua-git/salesteer-js-sdk#readme"
 }
