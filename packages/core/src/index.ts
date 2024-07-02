@@ -47,6 +47,12 @@ export type { User } from './resources/tenant/user/user.types'
 
 export type { Cart, CartSyncRequest } from './resources/tenant/cart/cart.types'
 
+export type { Tax } from './resources/tenant/tax/tax.types'
+export {
+  computeNonCumulativeTaxes,
+  computeNonCumulativeTaxedPrice,
+} from './resources/tenant/tax/tax.utils'
+
 export type {
   Rent,
   RentProductDetail,
