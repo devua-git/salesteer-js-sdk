@@ -42,3 +42,21 @@ export const productListProductPaginateSchema = makePaginateSchema(
 export type PaginatedProductListProduct = z.infer<
   typeof productListProductPaginateSchema
 >
+
+export const inProductListProductSchema = productSchema.and(
+  z.object({
+    pivot: z.object({
+      id: z.coerce.number(),
+      discounted_amount: z.coerce.number().nullable(),
+      product_id: z.coerce.number(),
+      product_list_id: z.coerce.number(),
+    }),
+  })
+)
+export type InProductListProduct = z.infer<typeof inProductListProductSchema>
+export const inProductListProductPaginateSchema = makePaginateSchema(
+  inProductListProductSchema
+)
+export type PaginatedInProductListProduct = z.infer<
+  typeof inProductListProductPaginateSchema
+>

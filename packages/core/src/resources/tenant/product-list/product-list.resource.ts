@@ -4,7 +4,7 @@ import type { PaginateQueryParams } from '../../../utils/pagination'
 import { categoryTreesResponseSchema } from '../product-category/product-category.types'
 import {
   productListPaginateSchema,
-  productListProductPaginateSchema,
+  inProductListProductPaginateSchema,
 } from './product-list.types'
 
 export class ProductListResource extends BaseResource {
@@ -27,7 +27,7 @@ export class ProductListResource extends BaseResource {
       }
     )
 
-    return parseWithFallbackAsync(productListProductPaginateSchema, res.data)
+    return parseWithFallbackAsync(inProductListProductPaginateSchema, res.data)
   }
 
   categories = async (req: { productListId: number }) => {

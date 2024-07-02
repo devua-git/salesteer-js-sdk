@@ -31,6 +31,7 @@ export type { Product } from './resources/tenant/product/product.types'
 export type {
   ProductList,
   ProductListProduct,
+  InProductListProduct,
 } from './resources/tenant/product-list/product-list.types'
 export type {
   ProductCategory,
