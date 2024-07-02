@@ -11,7 +11,7 @@
     "clean": "pnpm --filter \"./packages/**\" run clean",
     "prepare": "husky",
     "build": "nx reset && nx affected --target=build --exclude=examples/**",
-    "build:all": "nx run-many --target=build --exclude=examples/**",
+    "build:all": "nx reset && nx run-many --target=build --exclude=examples/**",
     "watch": "pnpm run build:all && nx watch --all -- pnpm run build:all",
     "dev": "pnpm run watch"
   },
