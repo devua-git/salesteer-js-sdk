@@ -1,6 +1,6 @@
 {
   "name": "@salesteer/vue",
-  "version": "0.0.6",
+  "version": "0.1.0",
   "private": false,
   "type": "module",
   "main": "dist/index.cjs",
@@ -31,22 +31,22 @@
   },
   "dependencies": {
     "@salesteer/core": "workspace:*",
-    "@tanstack/query-persist-client-core": "^5.37.1",
-    "@tanstack/query-sync-storage-persister": "^5.37.1",
-    "@tanstack/vue-query": "^5.37.1",
-    "vue": "^3.4.27"
+    "@tanstack/query-persist-client-core": "^5.49.1",
+    "@tanstack/query-sync-storage-persister": "^5.49.1",
+    "@tanstack/vue-query": "^5.49.1",
+    "vue": "^3.4.31"
   },
   "devDependencies": {
-    "@tanstack/eslint-plugin-query": "^5.35.6",
-    "@vitejs/plugin-vue": "^5.0.4",
-    "@vue/compiler-sfc": "^3.4.27",
+    "@tanstack/eslint-plugin-query": "^5.50.0",
+    "@vitejs/plugin-vue": "^5.0.5",
+    "@vue/compiler-sfc": "^3.4.31",
     "@vue/eslint-config-prettier": "^9.0.0",
     "@vue/eslint-config-typescript": "^13.0.0",
     "@vue/tsconfig": "^0.5.1",
     "pinia": "^2.1.7",
     "pinia-plugin-persistedstate": "^3.2.1",
-    "vite": "^5.2.11",
+    "vite": "^5.3.3",
     "vitest": "^1.6.0",
-    "vue-tsc": "^2.0.19"
+    "vue-tsc": "^2.0.24"
   }
 }
