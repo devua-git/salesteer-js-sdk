@@ -16,7 +16,7 @@ export const rentSchema = z.object({
 export type Rent = z.infer<typeof rentSchema>
 
 export const rentPaginateSchema = makePaginateSchema(rentSchema)
-export type PaginatedRentList = z.infer<typeof rentPaginateSchema>
+export type PaginateRentList = z.infer<typeof rentPaginateSchema>
 
 export const rentProductDetailSchema = z.object({
   product: productSchema,

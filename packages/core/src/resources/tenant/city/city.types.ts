@@ -11,4 +11,4 @@ export const citySchema = z.object({
 export type City = z.infer<typeof citySchema>
 
 export const cityPaginateSchema = makePaginateSchema(citySchema)
-export type PaginatedCity = z.infer<typeof cityPaginateSchema>
+export type PaginateCity = z.infer<typeof cityPaginateSchema>

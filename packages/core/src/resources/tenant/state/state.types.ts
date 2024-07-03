@@ -12,4 +12,4 @@ export const stateSchema = z.object({
 export type State = z.infer<typeof stateSchema>
 
 export const statePaginateSchema = makePaginateSchema(stateSchema)
-export type PaginatedState = z.infer<typeof statePaginateSchema>
+export type PaginateState = z.infer<typeof statePaginateSchema>

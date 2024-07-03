@@ -12,4 +12,4 @@ export const provinceSchema = z.object({
 export type Province = z.infer<typeof provinceSchema>
 
 export const provincePaginateSchema = makePaginateSchema(provinceSchema)
-export type PaginatedProvince = z.infer<typeof provincePaginateSchema>
+export type PaginateProvince = z.infer<typeof provincePaginateSchema>

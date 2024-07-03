@@ -19,7 +19,7 @@ export class PlaceResource extends BaseResource {
   }
 
   update = async (req: { placeId: number; data: PlaceUpdateRequest }) => {
-    const res = await this.getHttp().patch(`place/${req.placeId}`, {})
+    const res = await this.getHttp().patch(`place/${req.placeId}`, req.data)
     return parseWithFallbackAsync(placeSchema, res.data)
   }
 

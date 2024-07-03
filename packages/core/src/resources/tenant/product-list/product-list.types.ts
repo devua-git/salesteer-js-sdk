@@ -25,7 +25,7 @@ export const productListSchema = z
 export type ProductList = z.infer<typeof productListSchema>
 
 export const productListPaginateSchema = makePaginateSchema(productListSchema)
-export type PaginatedProductList = z.infer<typeof productListPaginateSchema>
+export type PaginateProductList = z.infer<typeof productListPaginateSchema>
 
 export const productListProductSchema = productSchema.and(
   z.object({
@@ -39,7 +39,7 @@ export type ProductListProduct = z.infer<typeof productListProductSchema>
 export const productListProductPaginateSchema = makePaginateSchema(
   productListProductSchema
 )
-export type PaginatedProductListProduct = z.infer<
+export type PaginateProductListProduct = z.infer<
   typeof productListProductPaginateSchema
 >
 
@@ -57,6 +57,6 @@ export type InProductListProduct = z.infer<typeof inProductListProductSchema>
 export const inProductListProductPaginateSchema = makePaginateSchema(
   inProductListProductSchema
 )
-export type PaginatedInProductListProduct = z.infer<
+export type PaginateInProductListProduct = z.infer<
   typeof inProductListProductPaginateSchema
 >

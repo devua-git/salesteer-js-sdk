@@ -30,7 +30,7 @@ export const cartSchema = z
 export type Cart = z.infer<typeof cartSchema>
 
 export const cartPaginateSchema = makePaginateSchema(cartSchema)
-export type PaginatedCartList = z.infer<typeof cartPaginateSchema>
+export type PaginateCartList = z.infer<typeof cartPaginateSchema>
 
 export type CartCreateRequest = { customer_id: number; name?: string | null }
 export type CartUpdateRequest = { name?: string | null }

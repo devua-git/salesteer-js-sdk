@@ -20,12 +20,12 @@ export const placeSchema = z
 
     contacts: z.array(entityContactSchema).optional().default([]),
   })
-  .merge(containsAddressSchema)
-  .merge(objectWithTimestamps)
+  .and(containsAddressSchema)
+  .and(objectWithTimestamps)
 export type Place = z.infer<typeof placeSchema>
 
 export const placePaginateSchema = makePaginateSchema(placeSchema)
-export type PaginatedPlaceList = z.infer<typeof placePaginateSchema>
+export type PaginatePlaceList = z.infer<typeof placePaginateSchema>
 
 export const placeableEntitySchema = z.object({
   id: z.coerce.number(),

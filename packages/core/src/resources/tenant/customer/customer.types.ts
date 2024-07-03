@@ -61,15 +61,10 @@ export const customerSchema = z
   .and(objectWithTimestamps)
   .and(objectWithSoftDelete)
   .and(placeableEntitySchema)
-//TODO
-//   .merge(assignableEntitySchema)
-//   .merge(taskableEntitySchema)
-//   .merge(plannableEntitySchema)
-//   .merge(followableEntitySchema)
 export type Customer = z.infer<typeof customerSchema>
 
 export const customerPaginateSchema = makePaginateSchema(customerSchema)
-export type PaginatedCustomerList = z.infer<typeof customerPaginateSchema>
+export type PaginateCustomerList = z.infer<typeof customerPaginateSchema>
 
 export const userManagedCustomerSchema = customerSchema.and(
   z.object({

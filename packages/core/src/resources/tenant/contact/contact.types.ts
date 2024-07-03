@@ -24,7 +24,7 @@ export const contactSchema = z
     leads: z.any().optional(),
     people: z.any().optional(),
   })
-  .merge(objectWithTimestamps)
+  .and(objectWithTimestamps)
 export type Contact = z.infer<typeof contactSchema>
 
 export const contactListSchema = makePaginateSchema(contactSchema)
@@ -39,5 +39,5 @@ export const entityContactSchema = z
     type: z.nativeEnum(ContactType),
     value: z.string(),
   })
-  .merge(objectWithTimestamps)
+  .and(objectWithTimestamps)
 export type EntityContact = z.infer<typeof entityContactSchema>

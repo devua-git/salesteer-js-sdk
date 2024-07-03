@@ -22,4 +22,4 @@ export const companySchema = z
 export type Company = z.infer<typeof companySchema>
 
 export const companyPaginateSchema = makePaginateSchema(companySchema)
-export type PaginatedCompany = z.infer<typeof companyPaginateSchema>
+export type PaginateCompany = z.infer<typeof companyPaginateSchema>

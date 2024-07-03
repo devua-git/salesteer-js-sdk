@@ -33,4 +33,4 @@ export const productSchema = z
 export type Product = z.infer<typeof productSchema>
 
 export const productPaginateSchema = makePaginateSchema(productSchema)
-export type PaginatedProductList = z.infer<typeof productPaginateSchema>
+export type PaginateProductList = z.infer<typeof productPaginateSchema>

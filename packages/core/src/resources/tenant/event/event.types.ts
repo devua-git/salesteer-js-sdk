@@ -46,6 +46,3 @@ export const plannableEventSchema = z.object({
 
   rent: z.any().nullish(),
 })
-// .merge(commentableEntitySchema)
-// .merge(reportableEntitySchema)
-// .merge(assignableEntitySchema)
