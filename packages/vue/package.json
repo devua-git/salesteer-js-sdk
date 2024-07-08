@@ -23,12 +23,7 @@
     "LICENSE",
     "README.md"
   ],
-  "scripts": {
-    "clean": "rimraf ./dist",
-    "build": "pnpm build-lib && pnpm build-types",
-    "build-lib": "vite build",
-    "build-types": "vue-tsc --declaration --emitDeclarationOnly"
-  },
+  "scripts": {},
   "dependencies": {
     "@salesteer/core": "workspace:*",
     "@tanstack/query-persist-client-core": "^5.49.1",

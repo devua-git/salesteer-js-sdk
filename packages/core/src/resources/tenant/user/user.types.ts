@@ -51,6 +51,7 @@ export interface UserRegisterRequest {
   email: string
   password: string
   password_confirmation: string
+  accept_terms: boolean
 }
 
 export interface UserSignInRequest {
