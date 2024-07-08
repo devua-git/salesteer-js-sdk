@@ -21,7 +21,7 @@
     "build": "nuxt-module-build build"
   },
   "dependencies": {
-    "@salesteer/vue": "*",
+    "@salesteer/vue": "workspace:*",
     "@nuxt/kit": "^3.11.1",
     "@nuxt/schema": "^3.11.1"
   },
