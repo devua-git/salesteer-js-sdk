@@ -47,6 +47,9 @@ export type { User } from './resources/tenant/user/user.types'
 
 export type { Cart, CartSyncRequest } from './resources/tenant/cart/cart.types'
 
+export type { Offer } from './resources/tenant/offer/offer.types'
+export type { Order } from './resources/tenant/order/order.types'
+
 export type { Tax } from './resources/tenant/tax/tax.types'
 export {
   computeNonCumulativeTaxes,
