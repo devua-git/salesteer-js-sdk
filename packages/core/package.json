@@ -1,6 +1,6 @@
 {
   "name": "@salesteer/core",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "type": "module",
   "types": "build/legacy/index.d.ts",
   "main": "build/legacy/index.cjs",
