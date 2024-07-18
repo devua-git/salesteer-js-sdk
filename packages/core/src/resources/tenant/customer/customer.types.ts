@@ -12,6 +12,7 @@ export const CustomerType = {
   Prospect: 1, // 0001
   Account: 2, // 0010
   Supplier: 4, // 0100
+  Person: 8, // 0100
 } as const
 export type CustomerType = (typeof CustomerType)[keyof typeof CustomerType]
 

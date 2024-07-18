@@ -3,6 +3,7 @@ import { objectWithTimestamps } from '../../../utils/validation'
 import { pipelineStepSchema } from '../pipeline-step/pipeline-step.types'
 import { hasAmountsSchema } from '../tax/tax.types'
 import { productSchema } from '../product/product.types'
+import { CustomerType } from '../customer/customer.types'
 
 export const orderSchema = z
   .object({
@@ -16,6 +17,28 @@ export const orderSchema = z
           products: z.array(productSchema.and(hasAmountsSchema)),
         })
         .and(hasAmountsSchema),
+
+      customer: z
+        .object({
+          nominative: z.string(),
+          company_name: z.string().nullable(),
+          first_name: z.string(),
+          last_name: z.string().nullable(),
+          type: z.nativeEnum(CustomerType),
+          vat_number: z.string().nullable(),
+          tax_code: z.string(),
+        })
+        .or(
+          z.object({
+            nominative: z.string(),
+            company_name: z.string(),
+            first_name: z.string().nullable(),
+            last_name: z.string().nullable(),
+            type: z.nativeEnum(CustomerType),
+            vat_number: z.string(),
+            tax_code: z.string().nullable(),
+          })
+        ),
       nominative: z.string(),
       customer_type: z.enum(['customer', 'person']),
       vat_number: z.string().nullable(),
