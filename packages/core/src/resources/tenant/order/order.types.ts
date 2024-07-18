@@ -39,10 +39,6 @@ export const orderSchema = z
             tax_code: z.string().nullable(),
           })
         ),
-      nominative: z.string(),
-      customer_type: z.enum(['customer', 'person']),
-      vat_number: z.string().nullable(),
-      tax_code: z.string().nullable(),
       billing_address: z.object({
         line1: z.string(),
         line2: z.string().nullable(),
