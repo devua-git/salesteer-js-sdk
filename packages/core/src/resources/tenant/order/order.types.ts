@@ -1,9 +1,9 @@
 import { z } from 'zod'
 import { objectWithTimestamps } from '../../../utils/validation'
 import { pipelineStepSchema } from '../pipeline-step/pipeline-step.types'
-import { hasAmountsSchema } from '../tax/tax.types'
-import { productSchema } from '../product/product.types'
+import { hasAmountsSchema, hasPriceAndQuantitySchema } from '../tax/tax.types'
 import { CustomerType } from '../customer/customer.types'
+import { productSchema } from '../product/product.types'
 
 export const orderSchema = z
   .object({
@@ -14,7 +14,22 @@ export const orderSchema = z
           id: z.coerce.number(),
           hashed_id: z.string(),
           name: z.string(),
-          products: z.array(productSchema.and(hasAmountsSchema)),
+          products: z.array(
+            z
+              .object({
+                name: z.string(),
+                taxes: z.array(
+                  z.object({
+                    name: z.string(),
+                    value: z.coerce.number(),
+                  })
+                ),
+                parent_id: z.coerce.number().nullable(),
+                parent: productSchema.nullable(),
+              })
+              .and(hasAmountsSchema)
+              .and(hasPriceAndQuantitySchema)
+          ),
         })
         .and(hasAmountsSchema),
 
@@ -40,6 +55,15 @@ export const orderSchema = z
           })
         ),
       billing_address: z.object({
+        line1: z.string(),
+        line2: z.string().nullable(),
+        postal_code: z.string(),
+        country: z.string(),
+        state: z.string(),
+        province: z.string(),
+        city: z.string(),
+      }),
+      shipping_address: z.object({
         line1: z.string(),
         line2: z.string().nullable(),
         postal_code: z.string(),
