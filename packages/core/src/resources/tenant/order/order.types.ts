@@ -1,9 +1,10 @@
 import { z } from 'zod'
-import { objectWithTimestamps } from '../../../utils/validation'
+import { objectWithTimestamps, zodDatetime } from '../../../utils/validation'
 import { pipelineStepSchema } from '../pipeline-step/pipeline-step.types'
 import { hasAmountsSchema, hasPriceAndQuantitySchema } from '../tax/tax.types'
 import { CustomerType } from '../customer/customer.types'
 import { productSchema } from '../product/product.types'
+import { unitMeasureSchema } from '../unit-measure/unit-measure.types'
 
 export const orderSchema = z
   .object({
@@ -26,6 +27,9 @@ export const orderSchema = z
                 ),
                 parent_id: z.coerce.number().nullable(),
                 parent: productSchema.nullable(),
+
+                unit_measure_id: z.coerce.number(),
+                unit_measure: unitMeasureSchema.optional(),
               })
               .and(hasAmountsSchema)
               .and(hasPriceAndQuantitySchema)
@@ -72,6 +76,7 @@ export const orderSchema = z
         province: z.string(),
         city: z.string(),
       }),
+      shipping_date: zodDatetime.nullable(),
     }),
     pipeline_entity_step_id: z.coerce.number(),
     pipeline_step: pipelineStepSchema,
