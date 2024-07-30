@@ -39,26 +39,31 @@ export const orderSchema = z
 
       customer: z
         .object({
+          id: z.coerce.number(),
           nominative: z.string(),
-          company_name: z.string().nullable(),
-          first_name: z.string(),
-          last_name: z.string().nullable(),
           type: z.nativeEnum(CustomerType),
-          vat_number: z.string().nullable(),
-          tax_code: z.string(),
         })
-        .or(
-          z.object({
-            nominative: z.string(),
-            company_name: z.string(),
-            first_name: z.string().nullable(),
-            last_name: z.string().nullable(),
-            type: z.nativeEnum(CustomerType),
-            vat_number: z.string(),
-            tax_code: z.string().nullable(),
-          })
+        .and(
+          z
+            .object({
+              company_name: z.string(),
+              first_name: z.string().nullable(),
+              last_name: z.string().nullable(),
+              vat_number: z.string(),
+              tax_code: z.string().nullable(),
+            })
+            .or(
+              z.object({
+                company_name: z.string().nullable(),
+                first_name: z.string(),
+                last_name: z.string().nullable(),
+                vat_number: z.string().nullable(),
+                tax_code: z.string(),
+              })
+            )
         ),
       billing_address: z.object({
+        id: z.coerce.number(),
         line1: z.string(),
         line2: z.string().nullable(),
         postal_code: z.string(),
@@ -67,17 +72,21 @@ export const orderSchema = z
         province: z.string(),
         city: z.string(),
       }),
-      shipping_address: z.object({
-        line1: z.string(),
-        line2: z.string().nullable(),
-        postal_code: z.string(),
-        country: z.string(),
-        state: z.string(),
-        province: z.string(),
-        city: z.string(),
-      }),
+      shipping_address: z
+        .object({
+          id: z.coerce.number(),
+          line1: z.string(),
+          line2: z.string().nullable(),
+          postal_code: z.string(),
+          country: z.string(),
+          state: z.string(),
+          province: z.string(),
+          city: z.string(),
+        })
+        .nullable(),
       shipping_date: zodDatetime.nullable(),
     }),
+
     pipeline_entity_step_id: z.coerce.number(),
     pipeline_step: pipelineStepSchema,
   })

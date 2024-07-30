@@ -15,6 +15,13 @@ export {
 } from './utils/http'
 
 export {
+  parseWithFallback,
+  parseWithFallbackAsync,
+  makePaginateSchema,
+  makeCursorPaginateSchema,
+} from './utils/validation'
+
+export {
   customerSchema,
   type Customer,
   type UserManagedCustomer,
