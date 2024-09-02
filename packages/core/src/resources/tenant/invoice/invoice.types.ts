@@ -4,6 +4,7 @@ import {
   objectWithTimestamps,
   zodEntityName,
 } from '../../../utils/validation'
+import type { SaleType } from '../tax/tax.types'
 import { hasAmountsSchema, hasPriceAndQuantitySchema } from '../tax/tax.types'
 
 export const InvoiceStatus = {
@@ -77,6 +78,7 @@ export type InvoiceCreateRequest = {
     //TODO: REFACTOR to unit_measure_id
     unit_measure: { id: number }
     sale: number
+    sale_type: SaleType
   }[]
 }
 
@@ -111,5 +113,6 @@ export type InvoiceUpdateRequest = (
     //TODO: REFACTOR to unit_measure_id
     unit_measure: { id: number }
     sale: number
+    sale_type: SaleType
   }[]
 }

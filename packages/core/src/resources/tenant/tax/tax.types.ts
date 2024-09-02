@@ -2,6 +2,12 @@ import { z } from 'zod'
 import { makePaginateSchema } from '../../../utils/validation'
 import { unitMeasureSchema } from '../unit-measure/unit-measure.types'
 
+export const SaleType = {
+  Percentage: 'percentage',
+  Amount: 'amount',
+}
+export type SaleType = (typeof SaleType)[keyof typeof SaleType]
+
 export const taxSchema = z.object({
   id: z.coerce.number(),
   name: z.string(),
@@ -35,7 +41,10 @@ export type HasAmounts = z.infer<typeof hasAmountsSchema>
 export const hasPriceAndQuantitySchema = z.object({
   price: z.coerce.number(),
   quantity: z.coerce.number(),
+
   sale: z.coerce.number(),
+  sale_type: z.nativeEnum(SaleType),
+  sale_amount: z.coerce.number(),
 
   taxes: z.array(taxSchema),
 
