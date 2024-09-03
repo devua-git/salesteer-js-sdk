@@ -29,7 +29,7 @@ export function legacyConfig(opts) {
   return {
     entry: opts.entry,
     format: ['cjs', 'esm'],
-    target: ['es2020', 'node16'],
+    target: ['es2020', 'node20'],
     outDir: 'build/legacy',
     dts: true,
     sourcemap: true,
