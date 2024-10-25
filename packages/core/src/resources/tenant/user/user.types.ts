@@ -1,5 +1,4 @@
 import { z } from 'zod'
-import { companySchema } from '../company/company.type'
 import { imageSchema } from '../image/image.types'
 import { abilitySchema, roleSchema } from '../role/role.types'
 import {
@@ -7,6 +6,7 @@ import {
   objectWithTimestamps,
   zodDatetime,
 } from '../../../utils/validation'
+import { companySchema } from '../company/company.types'
 
 export const userSchema = z
   .object({

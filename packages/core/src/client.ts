@@ -10,6 +10,8 @@ import { ProvinceResource } from './resources/tenant/province/province.resource'
 import { CityResource } from './resources/tenant/city/city.resource'
 import { CartResource } from './resources/tenant/cart/cart.resource'
 import { RentResource } from './resources/tenant/rent/rent.resource'
+import { TermResource } from './resources/tenant/term/term.resource'
+import { CompanyResource } from './resources/tenant/company/company.resource'
 
 export type SalesteerClientConfigs = {
   endpoint?: string
@@ -34,6 +36,8 @@ export class SalesteerClient {
   public province: ProvinceResource
 
   public rent: RentResource
+  public term: TermResource
+  public company: CompanyResource
 
   constructor(config?: SalesteerClientConfigs) {
     this.#http = new HttpClient({
@@ -56,6 +60,8 @@ export class SalesteerClient {
     this.province = new ProvinceResource(this)
 
     this.rent = new RentResource(this)
+    this.term = new TermResource(this)
+    this.company = new CompanyResource(this)
   }
 
   getHttp = () => {

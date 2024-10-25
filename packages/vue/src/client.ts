@@ -10,6 +10,8 @@ import { CountryQueries } from './queries/tenant/country.queries'
 import { ProvinceQueries } from './queries/tenant/province.queries'
 import { CartQueries } from './queries/tenant/cart.queries'
 import { RentQueries } from './queries/tenant/rent.queries'
+import { TermQueries } from './queries/tenant/term.queries'
+import { CompanyQueries } from './queries/tenant/company.queries'
 
 export type SalesteerQueryClientConfigs = {
   client: SalesteerClient
@@ -34,6 +36,8 @@ export class SalesteerQueryClient {
   public province: ProvinceQueries
 
   public rent: RentQueries
+  public term: TermQueries
+  public company: CompanyQueries
 
   constructor(config: SalesteerQueryClientConfigs) {
     this.#client = config.client
@@ -52,6 +56,8 @@ export class SalesteerQueryClient {
     this.province = new ProvinceQueries(this)
 
     this.rent = new RentQueries(this)
+    this.term = new TermQueries(this)
+    this.company = new CompanyQueries(this)
   }
 
   getClient() {

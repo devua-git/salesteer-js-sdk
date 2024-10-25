@@ -74,6 +74,24 @@ export {
 export { offerSchema, type Offer } from './resources/tenant/offer/offer.types'
 export { orderSchema, type Order } from './resources/tenant/order/order.types'
 
+export {
+  termSchema,
+  type Term,
+  termAcceptanceSchema,
+  type TermAcceptance,
+  termWithAcceptancesSchema,
+  type TermWithAcceptances,
+} from './resources/tenant/term/term.types'
+
+export {
+  type Company,
+  companySchema,
+  type Tenant,
+  tenantSchema,
+  type CurrentCompanyData,
+  currentCompanyDataSchema,
+} from './resources/tenant/company/company.types'
+
 export { taxSchema, type Tax, SaleType } from './resources/tenant/tax/tax.types'
 export {
   computeNonCumulativeTaxes,

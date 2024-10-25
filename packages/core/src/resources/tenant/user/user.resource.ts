@@ -25,7 +25,9 @@ export class UserResource extends BaseResource {
   }
 
   register = async (data: UserRegisterRequest) => {
-    const res = await this.getHttp().post('register', data)
+    const res = await this.getHttp().post('register', data, {
+      pathType: 'tenantSpa',
+    })
     return parseWithFallbackAsync(userSchema, res.data)
   }
 
@@ -51,10 +53,14 @@ export class UserResource extends BaseResource {
   }
 
   passwordReset = async (data: UserPasswordResetRequest) => {
-    await this.getHttp().post('password/reset', data)
+    await this.getHttp().post('password/reset', data, {
+      pathType: 'tenantSpa',
+    })
   }
 
   passwordForgot = async (data: UserPasswordForgotRequest) => {
-    await this.getHttp().post('password/forgot', data)
+    await this.getHttp().post('password/forgot', data, {
+      pathType: 'tenantSpa',
+    })
   }
 }
