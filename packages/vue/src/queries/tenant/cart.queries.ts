@@ -25,9 +25,9 @@ export class CartQueries extends BaseResourceQueries {
     return reactive(
       useMutation({
         mutationFn: this.getClient().cart.create,
-        onSuccess: (_, req) => {
+        onSuccess: () => {
           queryClient.invalidateQueries({
-            queryKey: CartQueries.keys.byCustomer(req.customer_id),
+            queryKey: CartQueries.keys.byCustomers(),
           })
         },
       })

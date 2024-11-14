@@ -11,8 +11,11 @@ export const cartSchema = z
 
     name: z.string().nullable(),
 
-    user_id: z.coerce.number(),
-    customer_id: z.coerce.number(),
+    user_id: z.coerce.number().nullable(),
+    customer_id: z.coerce.number().nullable(),
+    anonymous_id: z.string().nullable(),
+
+    shipping_place_id: z.coerce.number().nullable(),
 
     products: z.array(
       z.object({
@@ -32,7 +35,9 @@ export type Cart = z.infer<typeof cartSchema>
 export const cartPaginateSchema = makePaginateSchema(cartSchema)
 export type PaginateCartList = z.infer<typeof cartPaginateSchema>
 
-export type CartCreateRequest = { customer_id: number; name?: string | null }
+export type CartCreateRequest =
+  | { customer_id: number; name?: string | null }
+  | { anonymous_id: string; name?: string | null }
 export type CartUpdateRequest = { name?: string | null }
 
 export type CartSyncRequest = {
