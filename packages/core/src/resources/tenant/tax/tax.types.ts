@@ -18,7 +18,7 @@ export type Tax = z.infer<typeof taxSchema>
 
 export const taxListSchema = makePaginateSchema(taxSchema)
 
-export const taxableEntity = z.object({
+export const taxableEntitySchema = z.object({
   taxes: z.array(taxSchema),
 })
 

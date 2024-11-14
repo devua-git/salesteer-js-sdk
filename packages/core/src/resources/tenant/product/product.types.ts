@@ -6,7 +6,8 @@ import {
   makePaginateSchema,
   objectWithTimestamps,
 } from '../../../utils/validation'
-import { taxableEntity } from '../tax/tax.types'
+import { taxableEntitySchema } from '../tax/tax.types'
+import { entityWithCustomFieldsSchema } from '../custom-field/custom-field.types'
 
 export const productSchema = z
   .object({
@@ -37,7 +38,8 @@ export const productSchema = z
 
     metadata: z.record(z.string(), z.string()).nullable(),
   })
-  .and(taxableEntity)
+  .and(taxableEntitySchema)
+  .and(entityWithCustomFieldsSchema)
   .and(objectWithTimestamps)
 export type Product = z.infer<typeof productSchema>
 
