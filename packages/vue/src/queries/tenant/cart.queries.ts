@@ -9,6 +9,8 @@ export class CartQueries extends BaseResourceQueries {
     byCustomers: () => [...this.keys.all(), 'byCustomer'] as const,
     byCustomer: (params: unknown) =>
       [...this.keys.byCustomers(), params] as const,
+    byAnonymous: (params: unknown) =>
+      [...this.keys.all(), 'byAnonymous', params] as const,
   } as const
 
   useCustomerCarts = (customerId: Ref<number>) => {
@@ -19,16 +21,30 @@ export class CartQueries extends BaseResourceQueries {
     })
   }
 
+  useAnonymous = (anonymousId: Ref<string>) => {
+    return useQuery({
+      queryKey: CartQueries.keys.byAnonymous(anonymousId),
+      queryFn: () => this.getClient().cart.create({ customer_id: 0 }),
+    })
+  }
+
   useCreate = () => {
     const queryClient = useQueryClient()
 
     return reactive(
       useMutation({
         mutationFn: this.getClient().cart.create,
-        onSuccess: () => {
-          queryClient.invalidateQueries({
-            queryKey: CartQueries.keys.byCustomers(),
-          })
+        onSuccess: (_, req) => {
+          if ('customer_id' in req) {
+            queryClient.invalidateQueries({
+              queryKey: CartQueries.keys.byCustomers(),
+            })
+          }
+          if ('anonymous_id' in req) {
+            queryClient.invalidateQueries({
+              queryKey: CartQueries.keys.byAnonymous(req.anonymous_id),
+            })
+          }
         },
       })
     )

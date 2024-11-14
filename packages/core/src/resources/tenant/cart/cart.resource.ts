@@ -16,7 +16,8 @@ export class CartResource extends BaseResource {
   }
 
   create = async (req: CartCreateRequest) => {
-    await this.getHttp().post(`carts`, req)
+    const res = await this.getHttp().post(`carts`, req)
+    return parseWithFallbackAsync(cartSchema, res.data)
   }
 
   update = async (req: { cart: Cart; data: CartUpdateRequest }) => {
