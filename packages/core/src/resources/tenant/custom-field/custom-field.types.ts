@@ -43,7 +43,7 @@ export const entityWithCustomFieldsSchema = z.object({
       name: z.string(),
       value: z.any(),
       type: z.nativeEnum(CustomFieldType),
-      constrained_to_entity_type: zodEntityName.optional(),
+      constrained_to_entity_type: zodEntityName.nullable(),
       is_taggable: z.boolean(),
       is_unique: z.boolean(),
       is_required: z.boolean(),

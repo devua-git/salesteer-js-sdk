@@ -35,6 +35,7 @@ export type {
   Place,
   PlaceCreateRequest,
   PlaceUpdateRequest,
+  PlaceAutocompleteCreateResponse
 } from './resources/tenant/place/place.types'
 export {
   productSchema,

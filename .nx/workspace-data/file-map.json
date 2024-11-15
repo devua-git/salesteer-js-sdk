@@ -1,0 +1,676 @@
+{
+  "version": "6.0",
+  "nxVersion": "20.1.1",
+  "pathMappings": {},
+  "nxJsonPlugins": [],
+  "fileMap": {
+    "nonProjectFiles": [
+      {
+        "file": ".gitignore",
+        "hash": "10679094007551729561"
+      },
+      {
+        "file": "scripts/getTsupConfig.js",
+        "hash": "5316522144141593540"
+      },
+      {
+        "file": "pnpm-workspace.yaml",
+        "hash": "12654882864709138394"
+      },
+      {
+        "file": ".npmrc",
+        "hash": "2068679608541123529"
+      },
+      {
+        "file": "pnpm-lock.yaml",
+        "hash": "13473430628724895383"
+      },
+      {
+        "file": ".editorconfig",
+        "hash": "16124307209543881570"
+      },
+      {
+        "file": ".vscode/settings.json",
+        "hash": "10441259811071388629"
+      },
+      {
+        "file": "LICENSE.md",
+        "hash": "3229498418010702909"
+      },
+      {
+        "file": "nx.json",
+        "hash": "4820340067116556166"
+      },
+      {
+        "file": "README.md",
+        "hash": "1136537048886178627"
+      },
+      {
+        "file": "eslint.config.js",
+        "hash": "8978379352721227075"
+      },
+      {
+        "file": ".npmignore",
+        "hash": "16023645339660615430"
+      },
+      {
+        "file": "package.json",
+        "hash": "16047676360756384913"
+      },
+      {
+        "file": "tsconfig.json",
+        "hash": "6995542559884634339"
+      },
+      {
+        "file": "scripts/publish.js",
+        "hash": "14690434778538691631"
+      }
+    ],
+    "projectFileMap": {
+      "@salesteer/vue": [
+        {
+          "file": "packages/vue/.eslintrc.cjs",
+          "hash": "10345646900430511190"
+        },
+        {
+          "file": "packages/vue/package.json",
+          "hash": "5735812524248300535",
+          "deps": [
+            "npm:@tanstack/eslint-plugin-query",
+            "npm:@vitejs/plugin-vue",
+            "npm:@vue/compiler-sfc",
+            "npm:@vue/eslint-config-prettier",
+            "npm:@vue/eslint-config-typescript",
+            "npm:@vue/tsconfig",
+            "npm:pinia",
+            "npm:pinia-plugin-persistedstate",
+            "npm:vite",
+            "npm:vitest",
+            "npm:vue-tsc@2.1.10",
+            "@salesteer/core",
+            "npm:@tanstack/query-persist-client-core",
+            "npm:@tanstack/query-sync-storage-persister",
+            "npm:@tanstack/vue-query",
+            "npm:vue"
+          ]
+        },
+        {
+          "file": "packages/vue/src/client.ts",
+          "hash": "5134763008484704935",
+          "deps": [
+            "@salesteer/core"
+          ]
+        },
+        {
+          "file": "packages/vue/src/hooks/useSalesteerAuth.ts",
+          "hash": "18329462731771949654",
+          "deps": [
+            "npm:vue"
+          ]
+        },
+        {
+          "file": "packages/vue/src/hooks/useSalesteerClient.ts",
+          "hash": "4958089693612505156",
+          "deps": [
+            "@salesteer/core",
+            "npm:vue"
+          ]
+        },
+        {
+          "file": "packages/vue/src/hooks/useSalesteerCurrentCompany.ts",
+          "hash": "17843077805713625394",
+          "deps": [
+            "npm:vue",
+            "@salesteer/core"
+          ]
+        },
+        {
+          "file": "packages/vue/src/hooks/useSalesteerQueryClient.ts",
+          "hash": "11132741825823974111",
+          "deps": [
+            "npm:vue"
+          ]
+        },
+        {
+          "file": "packages/vue/src/hooks/useSalesteerUser.ts",
+          "hash": "15668793661620875410",
+          "deps": [
+            "npm:vue",
+            "@salesteer/core"
+          ]
+        },
+        {
+          "file": "packages/vue/src/index.ts",
+          "hash": "17468084378751330745"
+        },
+        {
+          "file": "packages/vue/src/install.ts",
+          "hash": "8466935505570235247",
+          "deps": [
+            "@salesteer/core",
+            "npm:vue",
+            "npm:pinia",
+            "npm:pinia-plugin-persistedstate"
+          ]
+        },
+        {
+          "file": "packages/vue/src/providers/CurrentCompanyProvider.vue",
+          "hash": "15576278865010839482"
+        },
+        {
+          "file": "packages/vue/src/providers/SalesteerAuthLayout.vue",
+          "hash": "10960198215426877324"
+        },
+        {
+          "file": "packages/vue/src/providers/SalesteerAuthProvider.vue",
+          "hash": "5590081110836137790"
+        },
+        {
+          "file": "packages/vue/src/providers/SalesteerAuthenticatedUserProvider.vue",
+          "hash": "4511219263864566203"
+        },
+        {
+          "file": "packages/vue/src/providers/SalesteerCompanyProvider.vue",
+          "hash": "361827120139603718"
+        },
+        {
+          "file": "packages/vue/src/queries/tenant/cart.queries.ts",
+          "hash": "13801164722528190187",
+          "deps": [
+            "npm:@tanstack/vue-query",
+            "npm:vue"
+          ]
+        },
+        {
+          "file": "packages/vue/src/queries/tenant/city.queries.ts",
+          "hash": "14668005165581242689",
+          "deps": [
+            "npm:@tanstack/vue-query",
+            "npm:vue",
+            "@salesteer/core"
+          ]
+        },
+        {
+          "file": "packages/vue/src/queries/tenant/company.queries.ts",
+          "hash": "10155953828161272127",
+          "deps": [
+            "npm:@tanstack/vue-query"
+          ]
+        },
+        {
+          "file": "packages/vue/src/queries/tenant/country.queries.ts",
+          "hash": "14079153871545674096",
+          "deps": [
+            "npm:@tanstack/vue-query",
+            "npm:vue",
+            "@salesteer/core"
+          ]
+        },
+        {
+          "file": "packages/vue/src/queries/tenant/customer.queries.ts",
+          "hash": "15114236604416673053",
+          "deps": [
+            "npm:@tanstack/vue-query",
+            "npm:vue",
+            "@salesteer/core"
+          ]
+        },
+        {
+          "file": "packages/vue/src/queries/tenant/payments.queries.ts",
+          "hash": "4469966998724040868",
+          "deps": [
+            "npm:@tanstack/vue-query",
+            "npm:vue"
+          ]
+        },
+        {
+          "file": "packages/vue/src/queries/tenant/place.queries.ts",
+          "hash": "7658809895950838807",
+          "deps": [
+            "npm:@tanstack/vue-query",
+            "npm:vue",
+            "@salesteer/core"
+          ]
+        },
+        {
+          "file": "packages/vue/src/queries/tenant/product-list.queries.ts",
+          "hash": "13367810113301356392",
+          "deps": [
+            "npm:@tanstack/vue-query",
+            "npm:vue",
+            "@salesteer/core"
+          ]
+        },
+        {
+          "file": "packages/vue/src/queries/tenant/product.queries.ts",
+          "hash": "13372486485223079562",
+          "deps": [
+            "npm:@tanstack/vue-query",
+            "npm:vue",
+            "@salesteer/core"
+          ]
+        },
+        {
+          "file": "packages/vue/src/queries/tenant/province.queries.ts",
+          "hash": "15763005222538158403",
+          "deps": [
+            "npm:@tanstack/vue-query",
+            "npm:vue",
+            "@salesteer/core"
+          ]
+        },
+        {
+          "file": "packages/vue/src/queries/tenant/rent.queries.ts",
+          "hash": "12340546191866509879",
+          "deps": [
+            "npm:@tanstack/vue-query",
+            "npm:vue",
+            "@salesteer/core"
+          ]
+        },
+        {
+          "file": "packages/vue/src/queries/tenant/state.queries.ts",
+          "hash": "10067671500015982403",
+          "deps": [
+            "npm:@tanstack/vue-query",
+            "npm:vue",
+            "@salesteer/core"
+          ]
+        },
+        {
+          "file": "packages/vue/src/queries/tenant/term.queries.ts",
+          "hash": "3592847484361731748",
+          "deps": [
+            "npm:@tanstack/vue-query",
+            "npm:vue"
+          ]
+        },
+        {
+          "file": "packages/vue/src/queries/tenant/user.queries.ts",
+          "hash": "14850840917667111713",
+          "deps": [
+            "npm:@tanstack/vue-query",
+            "npm:vue"
+          ]
+        },
+        {
+          "file": "packages/vue/src/resource-queries.ts",
+          "hash": "14557102202011414758"
+        },
+        {
+          "file": "packages/vue/src/stores/auth.store.ts",
+          "hash": "16596530172672684616",
+          "deps": [
+            "npm:pinia",
+            "@salesteer/core"
+          ]
+        },
+        {
+          "file": "packages/vue/src/types/auth.types.ts",
+          "hash": "6380425094748918042",
+          "deps": [
+            "npm:vue",
+            "@salesteer/core"
+          ]
+        },
+        {
+          "file": "packages/vue/src/utils/injection.ts",
+          "hash": "15074042097573596879",
+          "deps": [
+            "npm:vue"
+          ]
+        },
+        {
+          "file": "packages/vue/tsconfig.json",
+          "hash": "5623980403882222445"
+        },
+        {
+          "file": "packages/vue/vite.config.ts",
+          "hash": "11891691383244372619",
+          "deps": [
+            "npm:vite",
+            "npm:@vitejs/plugin-vue"
+          ]
+        }
+      ],
+      "@salesteer/core": [
+        {
+          "file": "packages/core/.eslintrc.cjs",
+          "hash": "15990237949753235297"
+        },
+        {
+          "file": "packages/core/package.json",
+          "hash": "9807829134900044703",
+          "deps": [
+            "npm:axios@1.7.2",
+            "npm:date-fns",
+            "npm:zod"
+          ]
+        },
+        {
+          "file": "packages/core/src/client.ts",
+          "hash": "6174848390568539884"
+        },
+        {
+          "file": "packages/core/src/index.ts",
+          "hash": "15835871366156396172"
+        },
+        {
+          "file": "packages/core/src/resource.ts",
+          "hash": "11752567394314163867"
+        },
+        {
+          "file": "packages/core/src/resources/tenant/address/address.types.ts",
+          "hash": "13798490192083361854",
+          "deps": [
+            "npm:zod"
+          ]
+        },
+        {
+          "file": "packages/core/src/resources/tenant/cart/cart.resource.ts",
+          "hash": "6642370693630386945",
+          "deps": [
+            "npm:zod"
+          ]
+        },
+        {
+          "file": "packages/core/src/resources/tenant/cart/cart.types.ts",
+          "hash": "7394171422477628413",
+          "deps": [
+            "npm:zod"
+          ]
+        },
+        {
+          "file": "packages/core/src/resources/tenant/city/city.resource.ts",
+          "hash": "15687185574631678162"
+        },
+        {
+          "file": "packages/core/src/resources/tenant/city/city.types.ts",
+          "hash": "13919899537437397003",
+          "deps": [
+            "npm:zod"
+          ]
+        },
+        {
+          "file": "packages/core/src/resources/tenant/company/company.resource.ts",
+          "hash": "3393567364316017539"
+        },
+        {
+          "file": "packages/core/src/resources/tenant/company/company.types.ts",
+          "hash": "7138000764530287644",
+          "deps": [
+            "npm:zod"
+          ]
+        },
+        {
+          "file": "packages/core/src/resources/tenant/contact/contact.types.ts",
+          "hash": "67750485442345234",
+          "deps": [
+            "npm:zod"
+          ]
+        },
+        {
+          "file": "packages/core/src/resources/tenant/country/country.resource.ts",
+          "hash": "7632079029120865671"
+        },
+        {
+          "file": "packages/core/src/resources/tenant/country/country.types.ts",
+          "hash": "12608650689626653758",
+          "deps": [
+            "npm:zod"
+          ]
+        },
+        {
+          "file": "packages/core/src/resources/tenant/custom-field/custom-field.types.ts",
+          "hash": "7254373191709519465",
+          "deps": [
+            "npm:zod"
+          ]
+        },
+        {
+          "file": "packages/core/src/resources/tenant/customer/customer.resource.ts",
+          "hash": "9800512813749698376"
+        },
+        {
+          "file": "packages/core/src/resources/tenant/customer/customer.types.ts",
+          "hash": "16799150431700570810",
+          "deps": [
+            "npm:zod"
+          ]
+        },
+        {
+          "file": "packages/core/src/resources/tenant/event/event.types.ts",
+          "hash": "14800713955443431666",
+          "deps": [
+            "npm:zod"
+          ]
+        },
+        {
+          "file": "packages/core/src/resources/tenant/image/image.types.ts",
+          "hash": "17685152721868189910",
+          "deps": [
+            "npm:zod"
+          ]
+        },
+        {
+          "file": "packages/core/src/resources/tenant/invoice/invoice.resource.ts",
+          "hash": "10992138831476153638"
+        },
+        {
+          "file": "packages/core/src/resources/tenant/invoice/invoice.types.ts",
+          "hash": "10521550295389067900",
+          "deps": [
+            "npm:zod"
+          ]
+        },
+        {
+          "file": "packages/core/src/resources/tenant/offer/offer.types.ts",
+          "hash": "8053286115372828386",
+          "deps": [
+            "npm:zod"
+          ]
+        },
+        {
+          "file": "packages/core/src/resources/tenant/order/order.types.ts",
+          "hash": "18325167127159923219",
+          "deps": [
+            "npm:zod"
+          ]
+        },
+        {
+          "file": "packages/core/src/resources/tenant/payment/payment.resource.ts",
+          "hash": "11555733360301591985",
+          "deps": [
+            "npm:zod"
+          ]
+        },
+        {
+          "file": "packages/core/src/resources/tenant/payment/payment.types.ts",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "packages/core/src/resources/tenant/pipeline-step/pipeline-step.types.ts",
+          "hash": "13581332687525158999",
+          "deps": [
+            "npm:zod"
+          ]
+        },
+        {
+          "file": "packages/core/src/resources/tenant/place/place.resource.ts",
+          "hash": "13382712304963915147"
+        },
+        {
+          "file": "packages/core/src/resources/tenant/place/place.types.ts",
+          "hash": "8217549838965537525",
+          "deps": [
+            "npm:zod"
+          ]
+        },
+        {
+          "file": "packages/core/src/resources/tenant/product-category/product-category.types.ts",
+          "hash": "16943291720504378809",
+          "deps": [
+            "npm:zod"
+          ]
+        },
+        {
+          "file": "packages/core/src/resources/tenant/product-list/product-list.resource.ts",
+          "hash": "9839381387102793328"
+        },
+        {
+          "file": "packages/core/src/resources/tenant/product-list/product-list.types.ts",
+          "hash": "3037209912309050975",
+          "deps": [
+            "npm:zod"
+          ]
+        },
+        {
+          "file": "packages/core/src/resources/tenant/product/product.resource.ts",
+          "hash": "709405436436977541"
+        },
+        {
+          "file": "packages/core/src/resources/tenant/product/product.types.ts",
+          "hash": "4144089905046916171",
+          "deps": [
+            "npm:zod"
+          ]
+        },
+        {
+          "file": "packages/core/src/resources/tenant/province/province.resource.ts",
+          "hash": "16508834964624598290"
+        },
+        {
+          "file": "packages/core/src/resources/tenant/province/province.types.ts",
+          "hash": "2994772649928652701",
+          "deps": [
+            "npm:zod"
+          ]
+        },
+        {
+          "file": "packages/core/src/resources/tenant/rent/rent.resource.ts",
+          "hash": "10150442870276654904",
+          "deps": [
+            "npm:zod"
+          ]
+        },
+        {
+          "file": "packages/core/src/resources/tenant/rent/rent.types.ts",
+          "hash": "17147526258720968935",
+          "deps": [
+            "npm:zod"
+          ]
+        },
+        {
+          "file": "packages/core/src/resources/tenant/role/role.types.ts",
+          "hash": "16960096624226364298",
+          "deps": [
+            "npm:zod"
+          ]
+        },
+        {
+          "file": "packages/core/src/resources/tenant/state/state.resource.ts",
+          "hash": "11726956510094923995"
+        },
+        {
+          "file": "packages/core/src/resources/tenant/state/state.types.ts",
+          "hash": "6585884929518109208",
+          "deps": [
+            "npm:zod"
+          ]
+        },
+        {
+          "file": "packages/core/src/resources/tenant/tax/tax.types.ts",
+          "hash": "2848699279424820331",
+          "deps": [
+            "npm:zod"
+          ]
+        },
+        {
+          "file": "packages/core/src/resources/tenant/tax/tax.utils.ts",
+          "hash": "10802131865045656162"
+        },
+        {
+          "file": "packages/core/src/resources/tenant/term/term.resource.ts",
+          "hash": "1604949113828308814"
+        },
+        {
+          "file": "packages/core/src/resources/tenant/term/term.types.ts",
+          "hash": "16342126367697033334",
+          "deps": [
+            "npm:zod"
+          ]
+        },
+        {
+          "file": "packages/core/src/resources/tenant/unit-measure/unit-measure.types.ts",
+          "hash": "6040901223494782935",
+          "deps": [
+            "npm:zod"
+          ]
+        },
+        {
+          "file": "packages/core/src/resources/tenant/user/user.resource.ts",
+          "hash": "4754092328915368154",
+          "deps": [
+            "npm:zod"
+          ]
+        },
+        {
+          "file": "packages/core/src/resources/tenant/user/user.types.ts",
+          "hash": "13144928224019086313",
+          "deps": [
+            "npm:zod"
+          ]
+        },
+        {
+          "file": "packages/core/src/utils/bitwise.ts",
+          "hash": "13999293733424598798"
+        },
+        {
+          "file": "packages/core/src/utils/cookies.ts",
+          "hash": "3806686099046766299"
+        },
+        {
+          "file": "packages/core/src/utils/http.ts",
+          "hash": "8781644183233520851",
+          "deps": [
+            "npm:axios@1.7.2"
+          ]
+        },
+        {
+          "file": "packages/core/src/utils/map-enum.ts",
+          "hash": "8319035268252511279"
+        },
+        {
+          "file": "packages/core/src/utils/morphables.ts",
+          "hash": "14681538408268383334"
+        },
+        {
+          "file": "packages/core/src/utils/pagination.ts",
+          "hash": "16423975341043617986"
+        },
+        {
+          "file": "packages/core/src/utils/types.ts",
+          "hash": "8209616453802243120"
+        },
+        {
+          "file": "packages/core/src/utils/validation.ts",
+          "hash": "149126006166545954",
+          "deps": [
+            "npm:zod"
+          ]
+        },
+        {
+          "file": "packages/core/tsconfig.json",
+          "hash": "15692301360241012882"
+        },
+        {
+          "file": "packages/core/tsup.config.ts",
+          "hash": "1387772936608680288",
+          "deps": [
+            "npm:tsup"
+          ]
+        }
+      ]
+    }
+  }
+}

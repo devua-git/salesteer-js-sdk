@@ -30,7 +30,7 @@
   "include": [
     "src/**/*.ts",
     "src/**/*.tsx",
-    ".eslintrc.cjs",
+    "eslint.config.js",
     "tsup.config.js"
   ]
 }

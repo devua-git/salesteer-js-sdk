@@ -28,7 +28,7 @@ export function parseWithFallback<Output, Def extends ZodTypeDef>(
     return schema.parse(data)
   } catch (e) {
     console.warn('Parse failed, returning fallback data')
-    console.warn(e)
+    console.debug(JSON.stringify(e, null, 2))
 
     return data as ZodType<Output, Def, Output>['_output']
   }
@@ -42,7 +42,7 @@ export async function parseWithFallbackAsync<Output, Def extends ZodTypeDef>(
     return await schema.parseAsync(data)
   } catch (e) {
     console.warn('Parse failed, returning fallback data')
-    console.warn(e)
+    console.debug(JSON.stringify(e, null, 2))
 
     return data as ZodType<Output, Def, Output>['_output']
   }

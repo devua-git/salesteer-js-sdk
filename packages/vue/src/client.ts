@@ -12,6 +12,7 @@ import { CartQueries } from './queries/tenant/cart.queries'
 import { RentQueries } from './queries/tenant/rent.queries'
 import { TermQueries } from './queries/tenant/term.queries'
 import { CompanyQueries } from './queries/tenant/company.queries'
+import { PaymentQueries } from './queries/tenant/payments.queries'
 
 export type SalesteerQueryClientConfigs = {
   client: SalesteerClient
@@ -34,6 +35,7 @@ export class SalesteerQueryClient {
   public state: StateQueries
   public country: CountryQueries
   public province: ProvinceQueries
+  public payment: PaymentQueries
 
   public rent: RentQueries
   public term: TermQueries
@@ -54,6 +56,7 @@ export class SalesteerQueryClient {
     this.state = new StateQueries(this)
     this.country = new CountryQueries(this)
     this.province = new ProvinceQueries(this)
+    this.payment = new PaymentQueries(this)
 
     this.rent = new RentQueries(this)
     this.term = new TermQueries(this)

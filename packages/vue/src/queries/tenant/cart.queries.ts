@@ -24,7 +24,8 @@ export class CartQueries extends BaseResourceQueries {
   useAnonymous = (anonymousId: Ref<string>) => {
     return useQuery({
       queryKey: CartQueries.keys.byAnonymous(anonymousId),
-      queryFn: () => this.getClient().cart.create({ customer_id: 0 }),
+      queryFn: () =>
+        this.getClient().cart.create({ anonymous_id: anonymousId.value }),
     })
   }
 
@@ -89,6 +90,21 @@ export class CartQueries extends BaseResourceQueries {
         onSuccess: (_, req) => {
           queryClient.invalidateQueries({
             queryKey: CartQueries.keys.byCustomer(req.cart.customer_id),
+          })
+        },
+      })
+    )
+  }
+
+  useSetShipping = () => {
+    const queryClient = useQueryClient()
+
+    return reactive(
+      useMutation({
+        mutationFn: this.getClient().cart.setShipping,
+        onSuccess: (_, req) => {
+          queryClient.invalidateQueries({
+            queryKey: CartQueries.keys.byAnonymous(req.anonymous_id),
           })
         },
       })

@@ -12,6 +12,7 @@ import { CartResource } from './resources/tenant/cart/cart.resource'
 import { RentResource } from './resources/tenant/rent/rent.resource'
 import { TermResource } from './resources/tenant/term/term.resource'
 import { CompanyResource } from './resources/tenant/company/company.resource'
+import { PaymentResource } from './resources/tenant/payment/payment.resource'
 
 export type SalesteerClientConfigs = {
   endpoint?: string
@@ -34,6 +35,7 @@ export class SalesteerClient {
   public state: StateResource
   public country: CountryResource
   public province: ProvinceResource
+  public payment: PaymentResource
 
   public rent: RentResource
   public term: TermResource
@@ -58,6 +60,7 @@ export class SalesteerClient {
     this.state = new StateResource(this)
     this.country = new CountryResource(this)
     this.province = new ProvinceResource(this)
+    this.payment = new PaymentResource(this)
 
     this.rent = new RentResource(this)
     this.term = new TermResource(this)

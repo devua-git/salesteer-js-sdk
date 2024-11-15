@@ -8,6 +8,11 @@ export const SaleType = {
 }
 export type SaleType = (typeof SaleType)[keyof typeof SaleType]
 
+export const hasSaleSchema = z.object({
+  sale: z.coerce.number(),
+  sale_type: z.nativeEnum(SaleType),
+})
+
 export const taxSchema = z.object({
   id: z.coerce.number(),
   name: z.string(),
@@ -38,17 +43,16 @@ export const hasAmountsSchema = z.object({
 })
 export type HasAmounts = z.infer<typeof hasAmountsSchema>
 
-export const hasPriceAndQuantitySchema = z.object({
-  price: z.coerce.number(),
-  quantity: z.coerce.number(),
+export const hasPriceAndQuantitySchema = z
+  .object({
+    price: z.coerce.number(),
+    quantity: z.coerce.number(),
 
-  sale: z.coerce.number(),
-  sale_type: z.nativeEnum(SaleType),
-  sale_amount: z.coerce.number(),
+    taxes: z.array(taxSchema),
+    sale_amount: z.coerce.number(),
 
-  taxes: z.array(taxSchema),
-
-  unit_measure_id: z.coerce.number(),
-  unit_measure: unitMeasureSchema,
-})
+    unit_measure_id: z.coerce.number(),
+    unit_measure: unitMeasureSchema,
+  })
+  .and(hasSaleSchema)
 export type HasPriceAndQuantity = z.infer<typeof hasPriceAndQuantitySchema>

@@ -1,8 +1,8 @@
 import { BaseResource } from '../../../resource'
 import { parseWithFallbackAsync } from '../../../utils/validation'
 import type { PaginateQueryParams } from '../../../utils/pagination'
+import { placeAutocompleteCreateResponseSchema, placeAutocompleteSchema, placePaginateSchema, placeSchema } from './place.types'
 import type { PlaceCreateRequest, PlaceUpdateRequest } from './place.types'
-import { placePaginateSchema, placeSchema } from './place.types'
 
 export class PlaceResource extends BaseResource {
   list = async (params?: PaginateQueryParams) => {
@@ -25,5 +25,34 @@ export class PlaceResource extends BaseResource {
 
   drop = async (placeId: number) => {
     await this.getHttp().delete(`place/${placeId}`, {})
+  }
+
+  autocomplete = async (query: string) => {
+    let data: unknown = []
+
+    if (query) {
+      const res = await this.getHttp().get(`places/autocomplete`, {
+        params: {
+          query,
+        },
+      })
+
+      data = res.data
+    }
+
+    return parseWithFallbackAsync(
+      placeAutocompleteSchema,
+      data
+    )
+  }
+
+  autocompleteCreate = async (req: { placeId: string }) => {
+    const res = await this.getHttp().post(`places/autocomplete/create`, {
+      place_id: req.placeId,
+    })
+
+    return parseWithFallbackAsync(placeAutocompleteCreateResponseSchema,
+      res.data
+    )
   }
 }

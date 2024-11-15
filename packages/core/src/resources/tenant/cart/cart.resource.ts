@@ -4,6 +4,7 @@ import { parseWithFallbackAsync } from '../../../utils/validation'
 import type {
   Cart,
   CartCreateRequest,
+  CartSetShippingRequest,
   CartSyncRequest,
   CartUpdateRequest,
 } from './cart.types'
@@ -30,5 +31,9 @@ export class CartResource extends BaseResource {
 
   syncProducts = async (req: { cart: Cart; data: CartSyncRequest }) => {
     await this.getHttp().post(`carts/${req.cart.id}/products`, req.data)
+  }
+
+  setShipping = async (req: CartSetShippingRequest) => {
+     await this.getHttp().post(`carts/shipping`, req)
   }
 }

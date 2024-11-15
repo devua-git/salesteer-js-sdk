@@ -7,6 +7,10 @@ import {
 import type { ContactType } from '../contact/contact.types'
 import { entityContactSchema } from '../contact/contact.types'
 import { containsAddressSchema } from '../address/address.types'
+import { countrySchema } from '../country/country.types'
+import { stateSchema } from '../state/state.types'
+import { provinceSchema } from '../province/province.types'
+import { citySchema } from '../city/city.types'
 
 export const placeSchema = z
   .object({
@@ -56,3 +60,18 @@ export type PlaceCreateRequest = {
 }
 
 export type PlaceUpdateRequest = PlaceCreateRequest
+
+export const placeAutocompleteSchema = z.object({
+  data: z.array(z.object({ place_id: z.string(), label: z.string() })),
+})
+
+export const placeAutocompleteCreateResponseSchema =
+z.object({
+  country: countrySchema,
+  state: stateSchema,
+  province: provinceSchema,
+  city: citySchema,
+  postal_code: z.string(),
+  line_1: z.string(),
+})
+export type PlaceAutocompleteCreateResponse = z.infer<typeof placeAutocompleteCreateResponseSchema>
