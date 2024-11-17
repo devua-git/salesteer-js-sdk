@@ -8,11 +8,13 @@ export class PaymentResource extends BaseResource {
     entityName: EntityName
     entityId: number
     email?: string
+    requireBillingAddress?: boolean
   }) => {
     const res = await this.getHttp().post(`payments/checkout`, {
       entity_name: req.entityName,
       entity_id: req.entityId,
       email: req.email,
+      require_billing_address: req.requireBillingAddress,
     })
 
     return await parseWithFallbackAsync(

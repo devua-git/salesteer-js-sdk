@@ -89,7 +89,7 @@ export class CartQueries extends BaseResourceQueries {
         mutationFn: this.getClient().cart.syncProducts,
         onSuccess: (_, req) => {
           queryClient.invalidateQueries({
-            queryKey: CartQueries.keys.byCustomer(req.cart.customer_id),
+            queryKey: CartQueries.keys.all(),
           })
         },
       })
@@ -104,7 +104,7 @@ export class CartQueries extends BaseResourceQueries {
         mutationFn: this.getClient().cart.setShipping,
         onSuccess: (_, req) => {
           queryClient.invalidateQueries({
-            queryKey: CartQueries.keys.byAnonymous(req.anonymous_id),
+            queryKey: CartQueries.keys.all(),
           })
         },
       })
