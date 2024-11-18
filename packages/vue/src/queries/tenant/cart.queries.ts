@@ -1,7 +1,8 @@
-import { useQuery, useQueryClient, useMutation } from '@tanstack/vue-query'
+import type { Cart } from '@salesteer/core'
+import { useMutation, useQuery, useQueryClient } from '@tanstack/vue-query'
 import { reactive, type Ref } from 'vue'
-import { BaseResourceQueries } from '../../resource-queries'
 import { QUERY_PREFIX } from '../../client'
+import { BaseResourceQueries } from '../../resource-queries'
 
 export class CartQueries extends BaseResourceQueries {
   static keys = {
@@ -13,7 +14,7 @@ export class CartQueries extends BaseResourceQueries {
       [...this.keys.all(), 'byAnonymous', params] as const,
   } as const
 
-  useCustomerCarts = (customerId: Ref<number>) => {
+  customerCarts = (customerId: Ref<number>) => {
     return useQuery({
       queryKey: CartQueries.keys.byCustomer(customerId),
       queryFn: () =>
@@ -21,7 +22,7 @@ export class CartQueries extends BaseResourceQueries {
     })
   }
 
-  useAnonymous = (anonymousId: Ref<string>) => {
+  anonymous = (anonymousId: Ref<string>) => {
     return useQuery({
       queryKey: CartQueries.keys.byAnonymous(anonymousId),
       queryFn: () =>
@@ -29,7 +30,7 @@ export class CartQueries extends BaseResourceQueries {
     })
   }
 
-  useCreate = () => {
+  create = () => {
     const queryClient = useQueryClient()
 
     return reactive(
@@ -51,22 +52,51 @@ export class CartQueries extends BaseResourceQueries {
     )
   }
 
-  useUpdate = () => {
+  update = () => {
     const queryClient = useQueryClient()
 
     return reactive(
       useMutation({
         mutationFn: this.getClient().cart.update,
-        onSuccess: (_, req) => {
+        onMutate: async (req) => {
+          if (!req.cart.anonymous_id) {
+            return
+          }
+
+          await queryClient.cancelQueries({
+            queryKey: CartQueries.keys.byAnonymous(req.cart.anonymous_id),
+          })
+
+          const previousCart = queryClient.getQueryData(
+            CartQueries.keys.byAnonymous(req.cart.anonymous_id)
+          )
+
+          queryClient.setQueryData(
+            CartQueries.keys.byAnonymous(req.cart.anonymous_id),
+            (old: Cart) => ({ ...old, ...req.data })
+          )
+
+          return { previousCart }
+        },
+        onError: (err, req, context) => {
+          if (!context?.previousCart) {
+            return
+          }
+          queryClient.setQueryData(
+            CartQueries.keys.byAnonymous(req.cart.anonymous_id),
+            context.previousCart
+          )
+        },
+        onSettled: () => {
           queryClient.invalidateQueries({
-            queryKey: CartQueries.keys.byCustomer(req.cart.customer_id),
+            queryKey: CartQueries.keys.all(),
           })
         },
       })
     )
   }
 
-  useDrop = () => {
+  drop = () => {
     const queryClient = useQueryClient()
 
     return reactive(
@@ -81,7 +111,7 @@ export class CartQueries extends BaseResourceQueries {
     )
   }
 
-  useSyncProducts = () => {
+  syncProducts = () => {
     const queryClient = useQueryClient()
 
     return reactive(
@@ -96,12 +126,12 @@ export class CartQueries extends BaseResourceQueries {
     )
   }
 
-  useSetShipping = () => {
+  setAddress = () => {
     const queryClient = useQueryClient()
 
     return reactive(
       useMutation({
-        mutationFn: this.getClient().cart.setShipping,
+        mutationFn: this.getClient().cart.setAddress,
         onSuccess: (_, req) => {
           queryClient.invalidateQueries({
             queryKey: CartQueries.keys.all(),

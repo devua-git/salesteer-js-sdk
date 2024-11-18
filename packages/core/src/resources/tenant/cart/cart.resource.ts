@@ -1,13 +1,13 @@
-import { z } from 'zod'
-import { BaseResource } from '../../../resource'
-import { parseWithFallbackAsync } from '../../../utils/validation'
 import type {
   Cart,
   CartCreateRequest,
-  CartSetShippingRequest,
+  CartSetAddressRequest,
   CartSyncRequest,
   CartUpdateRequest,
 } from './cart.types'
+import { z } from 'zod'
+import { BaseResource } from '../../../resource'
+import { parseWithFallbackAsync } from '../../../utils/validation'
 import { cartSchema } from './cart.types'
 
 export class CartResource extends BaseResource {
@@ -33,7 +33,7 @@ export class CartResource extends BaseResource {
     await this.getHttp().post(`carts/${req.cart.id}/products`, req.data)
   }
 
-  setShipping = async (req: CartSetShippingRequest) => {
-     await this.getHttp().post(`carts/shipping`, req)
+  setAddress = async (req: CartSetAddressRequest) => {
+    await this.getHttp().post(`carts/address`, req)
   }
 }
