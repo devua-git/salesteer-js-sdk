@@ -3,8 +3,8 @@ import {
   makePaginateSchema,
   objectWithTimestamps,
 } from '../../../utils/validation'
-import { productSchema } from '../product/product.types'
 import { customerSchema } from '../customer/customer.types'
+import { productSchema } from '../product/product.types'
 import { hasSaleSchema } from '../tax/tax.types'
 
 export const productListSchema = z
@@ -47,6 +47,7 @@ export type PaginateProductListProduct = z.infer<
 
 export const inProductListProductSchema = productSchema.and(
   z.object({
+    pivoted_sale_amount: z.coerce.number(),
     pivot: z
       .object({
         id: z.coerce.number(),

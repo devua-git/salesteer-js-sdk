@@ -1,13 +1,13 @@
 import { z } from 'zod'
-import { imageSchema } from '../image/image.types'
-import { productCategorySchema } from '../product-category/product-category.types'
-import { unitMeasureSchema } from '../unit-measure/unit-measure.types'
 import {
   makePaginateSchema,
   objectWithTimestamps,
 } from '../../../utils/validation'
-import { taxableEntitySchema } from '../tax/tax.types'
 import { entityWithCustomFieldsSchema } from '../custom-field/custom-field.types'
+import { imageSchema } from '../image/image.types'
+import { productCategorySchema } from '../product-category/product-category.types'
+import { taxableEntitySchema } from '../tax/tax.types'
+import { unitMeasureSchema } from '../unit-measure/unit-measure.types'
 
 export const productSchema = z
   .object({
