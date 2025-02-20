@@ -18,6 +18,8 @@
   },
   "yaml": {},
   "excludes": [
+    "**/.nx",
+    "**/.tmp",
     "**/node_modules",
     "**/*-lock.json",
     "**/*-lock.yaml",

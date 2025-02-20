@@ -5,7 +5,16 @@ import pluginVue from 'eslint-plugin-vue'
 
 export default defineConfigWithVueTs(
   {
-    ignores: ['node_modules', 'dist', 'package-lock.json', 'yarn.lock'],
+    ignores: [
+      '**/.nx',
+      '**/tmp',
+      '**/node_modules',
+      '**/dist',
+      '**/build',
+      '**/*-lock.json',
+      '**/*-lock.yaml',
+      '**/*.lock'
+    ],
   },
   // Vue + TypeScript
   pluginVue.configs['flat/essential'],
@@ -19,6 +28,7 @@ export default defineConfigWithVueTs(
       '@typescript-eslint/no-floating-promises': 'warn',
       '@typescript-eslint/consistent-type-definitions': 'off',
       '@typescript-eslint/explicit-function-return-type': 'off',
+      '@typescript-eslint/prefer-promise-reject-errors': 'warn',
       'vue/no-unused-vars': ['error', { ignorePattern: '^_' }],
       'vue/max-attributes-per-line': 'error',
       'vue/attributes-order': 'error',

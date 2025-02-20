@@ -28,8 +28,6 @@
     "baseUrl": "./"
   },
   "include": [
-    "src/**/*.ts",
-    "src/**/*.tsx",
     "eslint.config.js",
     "tsup.config.js"
   ]

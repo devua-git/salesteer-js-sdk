@@ -4,6 +4,6 @@
     "src/**/*.ts",
     "src/**/*.tsx",
     ".eslintrc.cjs",
-    "tsup.config.js"
+    "tsup.config.ts"
   ]
 }

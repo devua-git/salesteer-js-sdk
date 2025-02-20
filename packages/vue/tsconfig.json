@@ -2,7 +2,9 @@
   "extends": "@vue/tsconfig/tsconfig.json",
   "include": [
     "src/**/*.ts",
-    "src/**/*.vue"
+    "src/**/*.vue",
+    "tsup.config.ts",
+    "vite.config.ts"
   ],
   "exclude": [
     "src/**/__tests__/*"
