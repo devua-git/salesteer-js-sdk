@@ -34,6 +34,8 @@
     "@tanstack/query-persist-client-core": "^5.66.4",
     "@tanstack/query-sync-storage-persister": "^5.66.4",
     "@tanstack/vue-query": "^5.66.4",
+    "pinia": "^3.0.1",
+    "pinia-plugin-persistedstate": "^4.2.0",
     "vue": "^3.5.13"
   },
   "devDependencies": {
@@ -41,8 +43,6 @@
     "@vitejs/plugin-vue": "^5.2.1",
     "@vue/compiler-sfc": "^3.5.13",
     "@vue/tsconfig": "^0.7.0",
-    "pinia": "^3.0.1",
-    "pinia-plugin-persistedstate": "^4.2.0",
     "vite": "^6.1.1",
     "vitest": "^3.0.6",
     "vue-tsc": "^2.2.2"

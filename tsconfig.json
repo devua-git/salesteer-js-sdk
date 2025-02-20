@@ -29,6 +29,6 @@
   },
   "include": [
     "eslint.config.js",
-    "tsup.config.js"
+    "tsup.config.js",
   ]
 }
