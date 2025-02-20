@@ -1,21 +1,18 @@
-import { useQuery, useQueryClient, useMutation } from '@tanstack/vue-query'
-import { reactive, type Ref } from 'vue'
 import type { PaginateQueryParams } from '@salesteer/core'
-import { BaseResourceQueries } from '../../resource-queries'
+import { useMutation, useQuery, useQueryClient } from '@tanstack/vue-query'
+import { reactive, type Ref } from 'vue'
 import { QUERY_PREFIX } from '../../client'
+import { BaseResourceQueries } from '../../resource-queries'
 
 export class RentQueries extends BaseResourceQueries {
   static keys = {
     all: () => [QUERY_PREFIX, 'rents'] as const,
     details: () => [...this.keys.all(), 'detail'] as const,
-    detail: (params: unknown) =>
-      [...this.keys.all(), 'detail', params] as const,
+    detail: (params: unknown) => [...this.keys.all(), 'detail', params] as const,
     lists: () => [...this.keys.all(), 'lists'] as const,
     list: (params: unknown) => [this.keys.lists(), params] as const,
-    availableProducts: (params: unknown) =>
-      [...this.keys.all(), 'availableProducts', params] as const,
-    productDetail: (params: unknown) =>
-      [...this.keys.all(), 'rentDetail', params] as const,
+    availableProducts: (params: unknown) => [...this.keys.all(), 'availableProducts', params] as const,
+    productDetail: (params: unknown) => [...this.keys.all(), 'rentDetail', params] as const,
   } as const
 
   list = (params?: Ref<PaginateQueryParams>) => {
@@ -25,17 +22,16 @@ export class RentQueries extends BaseResourceQueries {
     })
   }
 
-  customerRents =
-    (customerId: Ref<number>) => (params?: Ref<PaginateQueryParams>) => {
-      return useQuery({
-        queryKey: RentQueries.keys.list([customerId, params]),
-        queryFn: () =>
-          this.getClient().rent.customerRents({
-            customerId: customerId.value,
-            params: params?.value,
-          }),
-      })
-    }
+  customerRents = (customerId: Ref<number>) => (params?: Ref<PaginateQueryParams>) => {
+    return useQuery({
+      queryKey: RentQueries.keys.list([customerId, params]),
+      queryFn: () =>
+        this.getClient().rent.customerRents({
+          customerId: customerId.value,
+          params: params?.value,
+        }),
+    })
+  }
 
   fetch = (id: Ref<number>) => {
     return useQuery({
@@ -50,7 +46,7 @@ export class RentQueries extends BaseResourceQueries {
       queryFn: () =>
         this.getClient().rent.availableProducts(
           params.value[0],
-          params.value[1]
+          params.value[1],
         ),
     })
   }
@@ -58,8 +54,7 @@ export class RentQueries extends BaseResourceQueries {
   productDetail = (productId: number, dateStart: Date, dateEnd: Date) => {
     return useQuery({
       queryKey: RentQueries.keys.productDetail([productId, dateStart, dateEnd]),
-      queryFn: () =>
-        this.getClient().rent.productDetail(productId, dateStart, dateEnd),
+      queryFn: () => this.getClient().rent.productDetail(productId, dateStart, dateEnd),
     })
   }
 
@@ -68,12 +63,11 @@ export class RentQueries extends BaseResourceQueries {
 
     return reactive(
       useMutation({
-        mutationFn: (data: unknown) =>
-          this.getClient().rent.confirm(productId, data),
+        mutationFn: (data: unknown) => this.getClient().rent.confirm(productId, data),
         onSuccess: () => {
           queryClient.invalidateQueries({ queryKey: RentQueries.keys.lists() })
         },
-      })
+      }),
     )
   }
 }

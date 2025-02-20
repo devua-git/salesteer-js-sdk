@@ -4,10 +4,10 @@ import { parseWithFallbackAsync } from '../../../utils/validation'
 import { userManagedCustomerSchema } from '../customer/customer.types'
 import { signInSchema, userSchema } from './user.types'
 import type {
-  UserRegisterRequest,
-  UserPasswordResetRequest,
-  UserSignInRequest,
   UserPasswordForgotRequest,
+  UserPasswordResetRequest,
+  UserRegisterRequest,
+  UserSignInRequest,
 } from './user.types'
 
 export class UserResource extends BaseResource {
@@ -20,7 +20,7 @@ export class UserResource extends BaseResource {
     const res = await this.getHttp().get(`user/${userId}/customers`)
     return await parseWithFallbackAsync(
       z.array(userManagedCustomerSchema),
-      res.data
+      res.data,
     )
   }
 

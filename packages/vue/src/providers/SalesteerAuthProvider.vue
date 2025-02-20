@@ -2,15 +2,18 @@
   <slot></slot>
 </template>
 
-<script setup lang="ts">
-import { computed, provide, reactive, ref, watch } from 'vue'
+<script
+  setup
+  lang="ts"
+>
 import type { User } from '@salesteer/core'
+import { computed, provide, reactive, ref, watch } from 'vue'
+import { useSalesteerAuthStore } from '..'
 import { useSalesteerQueryClient } from '../hooks/useSalesteerQueryClient'
 import {
-  SALESTEER_AUTH_KEY,
   type AuthContextPayload,
+  SALESTEER_AUTH_KEY,
 } from '../types/auth.types'
-import { useSalesteerAuthStore } from '..'
 
 const client = useSalesteerQueryClient()
 const store = useSalesteerAuthStore()

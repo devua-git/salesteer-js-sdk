@@ -1,7 +1,7 @@
 import { SalesteerClient, type SalesteerClientConfigs } from '@salesteer/core'
-import { type App } from 'vue'
 import { createPinia } from 'pinia'
 import piniaPersist from 'pinia-plugin-persistedstate'
+import { type App } from 'vue'
 import type { SalesteerQueryClientConfigs } from './client'
 import { SalesteerQueryClient } from './client'
 import { SALESTEER_CLIENT_KEY } from './hooks/useSalesteerClient'

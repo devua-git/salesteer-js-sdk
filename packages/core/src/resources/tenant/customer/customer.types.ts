@@ -1,11 +1,7 @@
 import { z } from 'zod'
 import { isFlagSet } from '../../../utils/bitwise'
 import { getEnumValues } from '../../../utils/map-enum'
-import {
-  makePaginateSchema,
-  objectWithSoftDelete,
-  objectWithTimestamps,
-} from '../../../utils/validation'
+import { makePaginateSchema, objectWithSoftDelete, objectWithTimestamps } from '../../../utils/validation'
 import { placeableEntitySchema } from '../place/place.types'
 
 export const CustomerType = {
@@ -20,17 +16,14 @@ export const UserManagedCustomerRole = {
   admin: 1,
   employee: 2,
 }
-export type UserManagedCustomerRole =
-  (typeof UserManagedCustomerRole)[keyof typeof UserManagedCustomerRole]
+export type UserManagedCustomerRole = (typeof UserManagedCustomerRole)[keyof typeof UserManagedCustomerRole]
 
 export function customerIsType(customer: Customer, typeFlag: CustomerType) {
   return isFlagSet(customer.type, typeFlag)
 }
 
 export function getCustomerTypes(customer: Customer) {
-  return getEnumValues(CustomerType).filter((customerType) =>
-    customerIsType(customer, customerType)
-  )
+  return getEnumValues(CustomerType).filter((customerType) => customerIsType(customer, customerType))
 }
 
 export const customerSchema = z
@@ -48,11 +41,11 @@ export const customerSchema = z
     average_satisfaction: z.coerce.number().nullish(),
     description: z.string().nullable(),
 
-    //TODO
+    // TODO
     // groups: z.array(customerGroupSchema).optional(),
     // product_interests: z.array(productInterestSchema).optional(),
 
-    //TODO
+    // TODO
     // acquire_type_id: z.coerce.number().nullable(),
     // acquire_type: acquireTypeSchema.nullish(),
 
@@ -70,7 +63,7 @@ export type PaginateCustomerList = z.infer<typeof customerPaginateSchema>
 export const userManagedCustomerSchema = customerSchema.and(
   z.object({
     pivot: z.object({ role: z.nativeEnum(UserManagedCustomerRole) }),
-  })
+  }),
 )
 export type UserManagedCustomer = z.infer<typeof userManagedCustomerSchema>
 

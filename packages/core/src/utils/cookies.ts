@@ -13,12 +13,13 @@ const defaultConfigs: SetCookieConfigs = {
 export const setCookie = (
   name: string,
   value: string,
-  configs?: Partial<SetCookieConfigs>
+  configs?: Partial<SetCookieConfigs>,
 ) => {
   const finalConfig = { ...defaultConfigs, ...configs }
   const encodedValue = encodeURIComponent(value)
   const expires = new Date(Date.now() + finalConfig.days * 864e5).toUTCString()
-  document.cookie = `${name}=${encodedValue}; expires=${expires}; path=${finalConfig.path}; SameSite=${finalConfig.sameSite}`
+  document.cookie =
+    `${name}=${encodedValue}; expires=${expires}; path=${finalConfig.path}; SameSite=${finalConfig.sameSite}`
 }
 
 export const getCookie = (name: string) => {

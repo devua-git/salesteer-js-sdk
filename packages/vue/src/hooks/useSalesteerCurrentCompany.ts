@@ -1,5 +1,5 @@
-import type { InjectionKey, Ref } from 'vue'
 import type { CurrentCompanyData } from '@salesteer/core'
+import type { InjectionKey, Ref } from 'vue'
 import { injectStrict } from '../utils/injection'
 
 export const SALESTEER_CURRENT_COMPANY_KEY: InjectionKey<

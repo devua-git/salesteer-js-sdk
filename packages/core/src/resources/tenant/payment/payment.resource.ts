@@ -1,7 +1,7 @@
 import { z } from 'zod'
 import { BaseResource } from '../../../resource'
-import { parseWithFallbackAsync } from '../../../utils/validation'
 import type { EntityName } from '../../../utils/morphables'
+import { parseWithFallbackAsync } from '../../../utils/validation'
 
 export class PaymentResource extends BaseResource {
   requestCheckoutUrl = async (req: {
@@ -21,7 +21,7 @@ export class PaymentResource extends BaseResource {
       z.object({
         checkout_session_url: z.string(),
       }),
-      res.data
+      res.data,
     )
   }
 }

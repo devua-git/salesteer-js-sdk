@@ -1,8 +1,8 @@
 // @ts-check
 
-import { resolve } from 'node:path'
-import { URL, fileURLToPath } from 'node:url'
 import { publish } from '@tanstack/config/publish'
+import { resolve } from 'node:path'
+import { fileURLToPath, URL } from 'node:url'
 
 const packages = [
   {

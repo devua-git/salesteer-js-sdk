@@ -1,6 +1,6 @@
 import { z } from 'zod'
-import { countrySchema } from '../country/country.types'
 import { makePaginateSchema } from '../../../utils/validation'
+import { countrySchema } from '../country/country.types'
 
 export const stateSchema = z.object({
   id: z.coerce.number(),

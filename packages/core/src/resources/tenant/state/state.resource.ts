@@ -1,6 +1,6 @@
 import { BaseResource } from '../../../resource'
-import { parseWithFallbackAsync } from '../../../utils/validation'
 import type { PaginateQueryParams } from '../../../utils/pagination'
+import { parseWithFallbackAsync } from '../../../utils/validation'
 import { statePaginateSchema } from './state.types'
 
 export class StateResource extends BaseResource {

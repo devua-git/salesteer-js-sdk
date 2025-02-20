@@ -1,16 +1,12 @@
 import { z } from 'zod'
-import {
-  makePaginateSchema,
-  objectWithTimestamps,
-  zodEntityName,
-} from '../../../utils/validation'
+import { makePaginateSchema, objectWithTimestamps, zodEntityName } from '../../../utils/validation'
+import { containsAddressSchema } from '../address/address.types'
+import { citySchema } from '../city/city.types'
 import type { ContactType } from '../contact/contact.types'
 import { entityContactSchema } from '../contact/contact.types'
-import { containsAddressSchema } from '../address/address.types'
 import { countrySchema } from '../country/country.types'
-import { stateSchema } from '../state/state.types'
 import { provinceSchema } from '../province/province.types'
-import { citySchema } from '../city/city.types'
+import { stateSchema } from '../state/state.types'
 
 export const placeSchema = z
   .object({
@@ -65,8 +61,7 @@ export const placeAutocompleteSchema = z.object({
   data: z.array(z.object({ place_id: z.string(), label: z.string() })),
 })
 
-export const placeAutocompleteCreateResponseSchema =
-z.object({
+export const placeAutocompleteCreateResponseSchema = z.object({
   country: countrySchema,
   state: stateSchema,
   province: provinceSchema,

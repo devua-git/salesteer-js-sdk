@@ -22,7 +22,7 @@ export const objectWithSoftDelete = z.object({
 
 export function parseWithFallback<Output, Def extends ZodTypeDef>(
   schema: ZodType<Output, Def, unknown>,
-  data: unknown
+  data: unknown,
 ) {
   try {
     return schema.parse(data)
@@ -36,7 +36,7 @@ export function parseWithFallback<Output, Def extends ZodTypeDef>(
 
 export async function parseWithFallbackAsync<Output, Def extends ZodTypeDef>(
   schema: ZodType<Output, Def, unknown>,
-  data: unknown
+  data: unknown,
 ) {
   try {
     return await schema.parseAsync(data)
@@ -49,7 +49,7 @@ export async function parseWithFallbackAsync<Output, Def extends ZodTypeDef>(
 }
 
 export function makePaginateSchema<Output, Def extends ZodTypeDef>(
-  schema: ZodType<Output, Def, unknown>
+  schema: ZodType<Output, Def, unknown>,
 ) {
   return z.object({
     data: z.array(schema),
@@ -70,7 +70,7 @@ export function makePaginateSchema<Output, Def extends ZodTypeDef>(
 }
 
 export function makeCursorPaginateSchema<Output, Def extends ZodTypeDef>(
-  schema: ZodType<Output, Def, unknown>
+  schema: ZodType<Output, Def, unknown>,
 ) {
   return z.object({
     data: z.array(schema),

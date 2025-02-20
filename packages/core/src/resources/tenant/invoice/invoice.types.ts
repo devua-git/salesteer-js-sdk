@@ -1,9 +1,5 @@
 import { z } from 'zod'
-import {
-  makePaginateSchema,
-  objectWithTimestamps,
-  zodEntityName,
-} from '../../../utils/validation'
+import { makePaginateSchema, objectWithTimestamps, zodEntityName } from '../../../utils/validation'
 import type { SaleType } from '../tax/tax.types'
 import { hasAmountsSchema, hasPriceAndQuantitySchema } from '../tax/tax.types'
 
@@ -75,44 +71,46 @@ export type InvoiceCreateRequest = {
     price: number
     taxes_ids: number[]
     quantity: number
-    //TODO: REFACTOR to unit_measure_id
+    // TODO: REFACTOR to unit_measure_id
     unit_measure: { id: number }
     sale: number
     sale_type: SaleType
   }[]
 }
 
-export type InvoiceUpdateRequest = (
-  | {
+export type InvoiceUpdateRequest =
+  & (
+    | {
       customer_tax_code: string
       customer_vat_number?: string | null
     }
-  | {
+    | {
       customer_vat_number: string
       customer_tax_code?: string | null
     }
-) & {
-  customer_business_name?: string
-  customer_city?: string
-  customer_line1?: string
-  customer_line2?: string | null
-  customer_postal_code?: string
-  customer_country?: string
-  customer_state?: string | null
-  customer_province?: string | null
-  customer_sdi_code?: string | null
-  customer_pec?: string | null
+  )
+  & {
+    customer_business_name?: string
+    customer_city?: string
+    customer_line1?: string
+    customer_line2?: string | null
+    customer_postal_code?: string
+    customer_country?: string
+    customer_state?: string | null
+    customer_province?: string | null
+    customer_sdi_code?: string | null
+    customer_pec?: string | null
 
-  status: InvoiceStatus
+    status: InvoiceStatus
 
-  items: {
-    description: string
-    price: number
-    taxes_ids: number[]
-    quantity: number
-    //TODO: REFACTOR to unit_measure_id
-    unit_measure: { id: number }
-    sale: number
-    sale_type: SaleType
-  }[]
-}
+    items: {
+      description: string
+      price: number
+      taxes_ids: number[]
+      quantity: number
+      // TODO: REFACTOR to unit_measure_id
+      unit_measure: { id: number }
+      sale: number
+      sale_type: SaleType
+    }[]
+  }

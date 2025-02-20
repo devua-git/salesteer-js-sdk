@@ -29,11 +29,11 @@ export const isHttpErrors = (err: unknown): err is HttpErrors =>
   typeof err === 'object' && err !== null && 'error' in err
 
 export const hasFieldErrors = (errors?: unknown, field?: string) =>
-  field &&
-  isHttpErrors(errors) &&
-  errors.errors &&
-  errors.errors[field] &&
-  errors.errors[field].length > 0
+  field
+  && isHttpErrors(errors)
+  && errors.errors
+  && errors.errors[field]
+  && errors.errors[field].length > 0
 
 export type HttpClientConfigs = {
   endpoint?: string
@@ -65,8 +65,8 @@ export class HttpClient {
     this.#instance.interceptors.request.use(
       async (config) => {
         if (
-          config &&
-          (config.method === 'patch' || config.method === 'PATCH')
+          config
+          && (config.method === 'patch' || config.method === 'PATCH')
         ) {
           if (!config.data) {
             config.data = {}
@@ -83,10 +83,10 @@ export class HttpClient {
         }
 
         if (
-          this.#clientType === 'spa' &&
-          config.method != 'get' &&
-          config.method != 'GET' &&
-          !getCookie('XSRF-TOKEN')
+          this.#clientType === 'spa'
+          && config.method != 'get'
+          && config.method != 'GET'
+          && !getCookie('XSRF-TOKEN')
         ) {
           await this.#setCSRFToken()
         }
@@ -97,7 +97,7 @@ export class HttpClient {
 
         return config
       },
-      (error) => Promise.reject(error)
+      (error) => Promise.reject(error),
     )
 
     this.#instance.interceptors.response.use(
@@ -126,13 +126,12 @@ export class HttpClient {
         }
 
         return Promise.reject(customError)
-      }
+      },
     )
   }
 
   #buildUrl = (url: string, pathType?: PathType) => {
-    const path =
-      pathType ?? this.#clientType === 'spa' ? 'tenantSpa' : 'tenantApi'
+    const path = pathType ?? this.#clientType === 'spa' ? 'tenantSpa' : 'tenantApi'
 
     try {
       new URL(url)
@@ -164,38 +163,38 @@ export class HttpClient {
   get = <R = unknown, C = unknown>(url: string, config?: HttpConfig<C>) => {
     return this.#instance.get<R, AxiosResponse<R, C>, C>(
       this.#buildUrl(url, config?.pathType),
-      config
+      config,
     )
   }
 
   post = <R = unknown, C = unknown>(
     url: string,
     data?: C,
-    config?: HttpConfig<C>
+    config?: HttpConfig<C>,
   ) => {
     return this.#instance.post<R, AxiosResponse<R, C>, C>(
       this.#buildUrl(url, config?.pathType),
       data,
-      config
+      config,
     )
   }
 
   patch = <R = unknown, C = unknown>(
     url: string,
     data?: C,
-    config?: HttpConfig<C>
+    config?: HttpConfig<C>,
   ) => {
     return this.#instance.patch<R, AxiosResponse<R, C>, C>(
       this.#buildUrl(url, config?.pathType),
       data,
-      config
+      config,
     )
   }
 
   delete = <R = unknown, C = unknown>(url: string, config?: HttpConfig<C>) => {
     return this.#instance.delete<R, AxiosResponse<R, C>, C>(
       this.#buildUrl(url, config?.pathType),
-      config
+      config,
     )
   }
 }

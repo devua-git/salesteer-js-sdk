@@ -1,7 +1,7 @@
 import { z } from 'zod'
 import { makePaginateSchema, zodDatetime } from '../../../utils/validation'
-import { productSchema } from '../product/product.types'
 import { plannableEventSchema } from '../event/event.types'
+import { productSchema } from '../product/product.types'
 
 export const rentSchema = z.object({
   id: z.coerce.number(),
@@ -10,7 +10,7 @@ export const rentSchema = z.object({
   customer_id: z.coerce.number(),
   serialized_product: z.any(),
   paid_at: zodDatetime.nullable(),
-  customer: z.any(), //todo: risolvere il tipo
+  customer: z.any(), // todo: risolvere il tipo
   event: plannableEventSchema.optional(),
 })
 export type Rent = z.infer<typeof rentSchema>

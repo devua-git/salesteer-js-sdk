@@ -1,8 +1,8 @@
+import type { PaginateQueryParams } from '@salesteer/core'
 import { useQuery } from '@tanstack/vue-query'
 import type { Ref } from 'vue'
-import type { PaginateQueryParams } from '@salesteer/core'
-import { BaseResourceQueries } from '../../resource-queries'
 import { QUERY_PREFIX } from '../../client'
+import { BaseResourceQueries } from '../../resource-queries'
 
 export class StateQueries extends BaseResourceQueries {
   static keys = {

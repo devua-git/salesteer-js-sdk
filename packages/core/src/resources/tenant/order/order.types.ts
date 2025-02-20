@@ -1,9 +1,9 @@
 import { z } from 'zod'
 import { objectWithTimestamps, zodDatetime } from '../../../utils/validation'
-import { pipelineStepSchema } from '../pipeline-step/pipeline-step.types'
-import { hasAmountsSchema, hasPriceAndQuantitySchema } from '../tax/tax.types'
 import { CustomerType } from '../customer/customer.types'
+import { pipelineStepSchema } from '../pipeline-step/pipeline-step.types'
 import { productSchema } from '../product/product.types'
+import { hasAmountsSchema, hasPriceAndQuantitySchema } from '../tax/tax.types'
 import { unitMeasureSchema } from '../unit-measure/unit-measure.types'
 
 export const orderSchema = z
@@ -23,7 +23,7 @@ export const orderSchema = z
                   z.object({
                     name: z.string(),
                     value: z.coerce.number(),
-                  })
+                  }),
                 ),
                 parent_id: z.coerce.number().nullable(),
                 parent: productSchema.nullable(),
@@ -32,7 +32,7 @@ export const orderSchema = z
                 unit_measure: unitMeasureSchema.optional(),
               })
               .and(hasAmountsSchema)
-              .and(hasPriceAndQuantitySchema)
+              .and(hasPriceAndQuantitySchema),
           ),
         })
         .and(hasAmountsSchema),
@@ -59,8 +59,8 @@ export const orderSchema = z
                 last_name: z.string().nullable(),
                 vat_number: z.string().nullable(),
                 tax_code: z.string(),
-              })
-            )
+              }),
+            ),
         ),
       billing_address: z.object({
         id: z.coerce.number(),

@@ -1,10 +1,7 @@
 import { BaseResource } from '../../../resource'
-import { parseWithFallbackAsync } from '../../../utils/validation'
 import type { PaginateQueryParams } from '../../../utils/pagination'
-import type {
-  InvoiceCreateRequest,
-  InvoiceUpdateRequest,
-} from './invoice.types'
+import { parseWithFallbackAsync } from '../../../utils/validation'
+import type { InvoiceCreateRequest, InvoiceUpdateRequest } from './invoice.types'
 import { invoicePaginateSchema, invoiceSchema } from './invoice.types'
 
 export class InvoiceResource extends BaseResource {

@@ -8,25 +8,21 @@ export class CartQueries extends BaseResourceQueries {
   static keys = {
     all: () => [QUERY_PREFIX, 'carts'] as const,
     byCustomers: () => [...this.keys.all(), 'byCustomer'] as const,
-    byCustomer: (params: unknown) =>
-      [...this.keys.byCustomers(), params] as const,
-    byAnonymous: (params: unknown) =>
-      [...this.keys.all(), 'byAnonymous', params] as const,
+    byCustomer: (params: unknown) => [...this.keys.byCustomers(), params] as const,
+    byAnonymous: (params: unknown) => [...this.keys.all(), 'byAnonymous', params] as const,
   } as const
 
   customerCarts = (customerId: Ref<number>) => {
     return useQuery({
       queryKey: CartQueries.keys.byCustomer(customerId),
-      queryFn: () =>
-        this.getClient().cart.customerCarts({ customer_id: customerId.value }),
+      queryFn: () => this.getClient().cart.customerCarts({ customer_id: customerId.value }),
     })
   }
 
   anonymous = (anonymousId: Ref<string>) => {
     return useQuery({
       queryKey: CartQueries.keys.byAnonymous(anonymousId),
-      queryFn: () =>
-        this.getClient().cart.create({ anonymous_id: anonymousId.value }),
+      queryFn: () => this.getClient().cart.create({ anonymous_id: anonymousId.value }),
     })
   }
 
@@ -48,7 +44,7 @@ export class CartQueries extends BaseResourceQueries {
             })
           }
         },
-      })
+      }),
     )
   }
 
@@ -68,12 +64,12 @@ export class CartQueries extends BaseResourceQueries {
           })
 
           const previousCart = queryClient.getQueryData(
-            CartQueries.keys.byAnonymous(req.cart.anonymous_id)
+            CartQueries.keys.byAnonymous(req.cart.anonymous_id),
           )
 
           queryClient.setQueryData(
             CartQueries.keys.byAnonymous(req.cart.anonymous_id),
-            (old: Cart) => ({ ...old, ...req.data })
+            (old: Cart) => ({ ...old, ...req.data }),
           )
 
           return { previousCart }
@@ -84,7 +80,7 @@ export class CartQueries extends BaseResourceQueries {
           }
           queryClient.setQueryData(
             CartQueries.keys.byAnonymous(req.cart.anonymous_id),
-            context.previousCart
+            context.previousCart,
           )
         },
         onSettled: () => {
@@ -92,7 +88,7 @@ export class CartQueries extends BaseResourceQueries {
             queryKey: CartQueries.keys.all(),
           })
         },
-      })
+      }),
     )
   }
 
@@ -107,7 +103,7 @@ export class CartQueries extends BaseResourceQueries {
             queryKey: CartQueries.keys.byCustomer(req.customer_id),
           })
         },
-      })
+      }),
     )
   }
 
@@ -122,7 +118,7 @@ export class CartQueries extends BaseResourceQueries {
             queryKey: CartQueries.keys.all(),
           })
         },
-      })
+      }),
     )
   }
 
@@ -137,7 +133,7 @@ export class CartQueries extends BaseResourceQueries {
             queryKey: CartQueries.keys.all(),
           })
         },
-      })
+      }),
     )
   }
 }

@@ -1,12 +1,8 @@
 import { z } from 'zod'
+import { objectWithSoftDelete, objectWithTimestamps, zodDatetime } from '../../../utils/validation'
+import { companySchema } from '../company/company.types'
 import { imageSchema } from '../image/image.types'
 import { abilitySchema, roleSchema } from '../role/role.types'
-import {
-  objectWithSoftDelete,
-  objectWithTimestamps,
-  zodDatetime,
-} from '../../../utils/validation'
-import { companySchema } from '../company/company.types'
 
 export const userSchema = z
   .object({
@@ -43,7 +39,7 @@ export const signInSchema = userSchema.or(
   z.object({
     user: userSchema,
     token: z.string(),
-  })
+  }),
 )
 
 export interface UserRegisterRequest {

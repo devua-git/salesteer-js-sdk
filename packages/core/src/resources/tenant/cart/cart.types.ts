@@ -1,8 +1,5 @@
 import { z } from 'zod'
-import {
-  makePaginateSchema,
-  objectWithTimestamps,
-} from '../../../utils/validation'
+import { makePaginateSchema, objectWithTimestamps } from '../../../utils/validation'
 import { imageSchema } from '../image/image.types'
 import { offerSchema } from '../offer/offer.types'
 import { placeSchema } from '../place/place.types'
@@ -51,7 +48,7 @@ export const cartSchema = z
         amounts: amountsSchema,
         quantity: z.coerce.number(),
         image: imageSchema.nullish(),
-      })
+      }),
     ),
   })
   .and(objectWithTimestamps)

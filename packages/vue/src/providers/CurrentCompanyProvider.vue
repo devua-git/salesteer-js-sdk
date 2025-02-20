@@ -2,7 +2,10 @@
   <slot></slot>
 </template>
 
-<script lang="ts" setup>
+<script
+  lang="ts"
+  setup
+>
 import type { CurrentCompanyData } from '@salesteer/core'
 import { computed } from 'vue'
 import { provide } from 'vue'

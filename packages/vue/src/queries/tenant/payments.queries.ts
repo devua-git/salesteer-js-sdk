@@ -1,7 +1,7 @@
 import { useMutation } from '@tanstack/vue-query'
 import { reactive } from 'vue'
-import { BaseResourceQueries } from '../../resource-queries'
 import { QUERY_PREFIX } from '../../client'
+import { BaseResourceQueries } from '../../resource-queries'
 
 export class PaymentQueries extends BaseResourceQueries {
   static keys = {
@@ -12,7 +12,7 @@ export class PaymentQueries extends BaseResourceQueries {
     return reactive(
       useMutation({
         mutationFn: this.getClient().payment.requestCheckoutUrl,
-      })
+      }),
     )
   }
 }

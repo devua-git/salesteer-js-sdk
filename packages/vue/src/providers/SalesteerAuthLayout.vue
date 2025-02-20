@@ -9,7 +9,10 @@
   </template>
 </template>
 
-<script setup lang="ts">
+<script
+  setup
+  lang="ts"
+>
 import { useSalesteerAuth } from '..'
 import SalesteerAuthenticatedUserProvider from './SalesteerAuthenticatedUserProvider.vue'
 

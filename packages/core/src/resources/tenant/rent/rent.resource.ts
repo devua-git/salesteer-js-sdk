@@ -1,14 +1,9 @@
 import { z } from 'zod'
 import { BaseResource } from '../../../resource'
-import { parseWithFallbackAsync } from '../../../utils/validation'
 import type { PaginateQueryParams } from '../../../utils/pagination'
+import { parseWithFallbackAsync } from '../../../utils/validation'
 import { productSchema } from '../product/product.types'
-import {
-  rentCheckoutSchema,
-  rentPaginateSchema,
-  rentProductDetailSchema,
-  rentSchema,
-} from './rent.types'
+import { rentCheckoutSchema, rentPaginateSchema, rentProductDetailSchema, rentSchema } from './rent.types'
 
 export class RentResource extends BaseResource {
   list = async (params?: PaginateQueryParams) => {

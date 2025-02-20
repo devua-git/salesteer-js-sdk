@@ -97,9 +97,9 @@ export function isValidQueryFilter(filter: QueryFilter) {
     const hasLengthOfTwo = filter.value.length === 2
 
     if (
-      !isMultipleValueOperator(filter.operator) ||
-      hasNullValues ||
-      (isBetweenValueOperator(filter.operator) && !hasLengthOfTwo)
+      !isMultipleValueOperator(filter.operator)
+      || hasNullValues
+      || (isBetweenValueOperator(filter.operator) && !hasLengthOfTwo)
     ) {
       return false
     }
@@ -117,9 +117,11 @@ export function isValidQueryFilter(filter: QueryFilter) {
 export function getValidQueryFilters(filters: Record<string, QueryFilter>) {
   const validFilters = { ...filters }
 
-  for (const [filterName, { value, operator }] of Object.entries(
-    validFilters
-  )) {
+  for (
+    const [filterName, { value, operator }] of Object.entries(
+      validFilters,
+    )
+  ) {
     // Removes value if operator requires no value
     if (isEmptyValueOperator(operator)) {
       validFilters[filterName].value = undefined
@@ -187,8 +189,7 @@ export const queryFilterStringOperators = [
   'notEmpty',
 ] as const
 
-export type QueryFilterStringOperator =
-  (typeof queryFilterStringOperators)[number]
+export type QueryFilterStringOperator = (typeof queryFilterStringOperators)[number]
 
 export type FilterablesStringConfig = {
   type: 'string'
@@ -209,8 +210,7 @@ export const queryFilterNumberOperators = [
   'notNull',
 ] as const
 
-export type QueryFilterNumberOperator =
-  (typeof queryFilterNumberOperators)[number]
+export type QueryFilterNumberOperator = (typeof queryFilterNumberOperators)[number]
 
 export type FilterablesNumberConfig = {
   type: 'number'
@@ -225,8 +225,7 @@ export const queryFilterBooleanOperators = [
   'notNull',
 ] as const
 
-export type QueryFilterBooleanOperator =
-  (typeof queryFilterBooleanOperators)[number]
+export type QueryFilterBooleanOperator = (typeof queryFilterBooleanOperators)[number]
 
 export type FilterablesBooleanConfig = {
   type: 'boolean'
@@ -261,8 +260,7 @@ export const queryFilterSelectOperators = [
   'notNull',
 ] as const
 
-export type QueryFilterSelectOperator =
-  (typeof queryFilterSelectOperators)[number]
+export type QueryFilterSelectOperator = (typeof queryFilterSelectOperators)[number]
 
 export type QueryFilterSelectOption = { label: string; value: string | number }
 
@@ -282,8 +280,7 @@ export const queryFilterEntityOperators = [
   'notNull',
 ] as const
 
-export type QueryFilterEntityOperator =
-  (typeof queryFilterEntityOperators)[number]
+export type QueryFilterEntityOperator = (typeof queryFilterEntityOperators)[number]
 
 export type FilterablesConfig =
   | FilterablesStringConfig

@@ -1,8 +1,5 @@
 import { z } from 'zod'
-import {
-  makePaginateSchema,
-  objectWithTimestamps,
-} from '../../../utils/validation'
+import { makePaginateSchema, objectWithTimestamps } from '../../../utils/validation'
 
 export const ContactType = {
   email: 1,

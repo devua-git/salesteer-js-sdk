@@ -1,11 +1,8 @@
 import { z } from 'zod'
-import {
-  objectWithSoftDelete,
-  objectWithTimestamps,
-} from '../../../utils/validation'
+import { objectWithSoftDelete, objectWithTimestamps } from '../../../utils/validation'
+import { pipelineStepSchema } from '../pipeline-step/pipeline-step.types'
 import { productSchema } from '../product/product.types'
 import { amountsSchema, hasAmountsSchema } from '../tax/tax.types'
-import { pipelineStepSchema } from '../pipeline-step/pipeline-step.types'
 
 export const offerSchema = z
   .object({

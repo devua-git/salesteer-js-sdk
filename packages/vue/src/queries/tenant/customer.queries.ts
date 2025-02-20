@@ -1,8 +1,8 @@
-import { useQuery, useQueryClient, useMutation } from '@tanstack/vue-query'
-import { reactive, type Ref } from 'vue'
 import type { PaginateQueryParams } from '@salesteer/core'
-import { BaseResourceQueries } from '../../resource-queries'
+import { useMutation, useQuery, useQueryClient } from '@tanstack/vue-query'
+import { reactive, type Ref } from 'vue'
 import { QUERY_PREFIX } from '../../client'
+import { BaseResourceQueries } from '../../resource-queries'
 import { UserQueries } from './user.queries'
 
 export class CustomerQueries extends BaseResourceQueries {
@@ -37,13 +37,13 @@ export class CustomerQueries extends BaseResourceQueries {
 
           queryClient.setQueryData(
             CustomerQueries.keys.detail(customer.id),
-            customer
+            customer,
           )
           queryClient.invalidateQueries({
             queryKey: CustomerQueries.keys.detail(customer.id),
           })
         },
-      })
+      }),
     )
   }
 
@@ -63,13 +63,13 @@ export class CustomerQueries extends BaseResourceQueries {
 
           queryClient.setQueryData(
             CustomerQueries.keys.detail(customer.id),
-            customer
+            customer,
           )
           queryClient.invalidateQueries({
             queryKey: CustomerQueries.keys.detail(customer.id),
           })
         },
-      })
+      }),
     )
   }
 }

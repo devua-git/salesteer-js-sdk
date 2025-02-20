@@ -1,8 +1,8 @@
 import { z } from 'zod'
 import { citySchema } from '../city/city.types'
 import { countrySchema } from '../country/country.types'
-import { stateSchema } from '../state/state.types'
 import { provinceSchema } from '../province/province.types'
+import { stateSchema } from '../state/state.types'
 
 export const containsAddressSchema = z.object({
   line1: z.string().nullable(),

@@ -1,7 +1,12 @@
 import { BaseResource } from '../../../resource'
-import { parseWithFallbackAsync } from '../../../utils/validation'
 import type { PaginateQueryParams } from '../../../utils/pagination'
-import { placeAutocompleteCreateResponseSchema, placeAutocompleteSchema, placePaginateSchema, placeSchema } from './place.types'
+import { parseWithFallbackAsync } from '../../../utils/validation'
+import {
+  placeAutocompleteCreateResponseSchema,
+  placeAutocompleteSchema,
+  placePaginateSchema,
+  placeSchema,
+} from './place.types'
 import type { PlaceCreateRequest, PlaceUpdateRequest } from './place.types'
 
 export class PlaceResource extends BaseResource {
@@ -42,7 +47,7 @@ export class PlaceResource extends BaseResource {
 
     return parseWithFallbackAsync(
       placeAutocompleteSchema,
-      data
+      data,
     )
   }
 
@@ -51,8 +56,6 @@ export class PlaceResource extends BaseResource {
       place_id: req.placeId,
     })
 
-    return parseWithFallbackAsync(placeAutocompleteCreateResponseSchema,
-      res.data
-    )
+    return parseWithFallbackAsync(placeAutocompleteCreateResponseSchema, res.data)
   }
 }

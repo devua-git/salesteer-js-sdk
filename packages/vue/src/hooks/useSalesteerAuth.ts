@@ -1,8 +1,5 @@
 import type { Ref } from 'vue'
-import {
-  SALESTEER_AUTH_KEY,
-  type AuthContextPayload,
-} from '../types/auth.types'
+import { type AuthContextPayload, SALESTEER_AUTH_KEY } from '../types/auth.types'
 import { injectStrict } from '../utils/injection'
 
 export const useSalesteerAuth = (): Ref<AuthContextPayload> => {

@@ -31,6 +31,6 @@ export type TermAcceptance = z.infer<typeof termAcceptanceSchema>
 export const termWithAcceptancesSchema = termSchema.and(
   z.object({
     acceptances: z.array(termAcceptanceSchema),
-  })
+  }),
 )
 export type TermWithAcceptances = z.infer<typeof termWithAcceptancesSchema>

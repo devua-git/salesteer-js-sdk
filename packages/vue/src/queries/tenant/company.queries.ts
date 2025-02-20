@@ -1,6 +1,6 @@
-import { useQuery } from '@tanstack/vue-query' 
-import { BaseResourceQueries } from '../../resource-queries'
+import { useQuery } from '@tanstack/vue-query'
 import { QUERY_PREFIX } from '../../client'
+import { BaseResourceQueries } from '../../resource-queries'
 
 export class CompanyQueries extends BaseResourceQueries {
   static keys = {

@@ -1,8 +1,5 @@
 import { z } from 'zod'
-import {
-  makePaginateSchema,
-  objectWithTimestamps,
-} from '../../../utils/validation'
+import { makePaginateSchema, objectWithTimestamps } from '../../../utils/validation'
 import { entityWithCustomFieldsSchema } from '../custom-field/custom-field.types'
 import { imageSchema } from '../image/image.types'
 import { productCategorySchema } from '../product-category/product-category.types'

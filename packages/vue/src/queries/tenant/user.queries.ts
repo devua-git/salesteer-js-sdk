@@ -1,7 +1,7 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/vue-query'
 import { reactive, type Ref } from 'vue'
-import { BaseResourceQueries } from '../../resource-queries'
 import { QUERY_PREFIX } from '../../client'
+import { BaseResourceQueries } from '../../resource-queries'
 
 export class UserQueries extends BaseResourceQueries {
   static keys = {
@@ -9,8 +9,7 @@ export class UserQueries extends BaseResourceQueries {
     me: () => [...this.keys.all(), 'me'] as const,
 
     managedCustomers: () => [...this.keys.all(), 'managedCustomers'] as const,
-    managedCustomer: (params: unknown) =>
-      [...this.keys.managedCustomers(), params] as const,
+    managedCustomer: (params: unknown) => [...this.keys.managedCustomers(), params] as const,
   } as const
 
   useMe = () => {
@@ -31,7 +30,7 @@ export class UserQueries extends BaseResourceQueries {
     return reactive(
       useMutation({
         mutationFn: this.getClient().user.register,
-      })
+      }),
     )
   }
 
@@ -46,7 +45,7 @@ export class UserQueries extends BaseResourceQueries {
             queryKey: UserQueries.keys.me(),
           })
         },
-      })
+      }),
     )
   }
 
@@ -61,7 +60,7 @@ export class UserQueries extends BaseResourceQueries {
             queryKey: UserQueries.keys.me(),
           })
         },
-      })
+      }),
     )
   }
 
@@ -69,7 +68,7 @@ export class UserQueries extends BaseResourceQueries {
     return reactive(
       useMutation({
         mutationFn: this.getClient().user.passwordReset,
-      })
+      }),
     )
   }
 
@@ -77,7 +76,7 @@ export class UserQueries extends BaseResourceQueries {
     return reactive(
       useMutation({
         mutationFn: this.getClient().user.passwordForgot,
-      })
+      }),
     )
   }
 }

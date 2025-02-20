@@ -37,8 +37,8 @@ export const tenantSchema = z
         z.object({
           is_shop_enabled: z.literal(false),
           default_shop_product_list_id: z.null(),
-        })
-      )
+        }),
+      ),
   )
 export type Tenant = z.infer<typeof tenantSchema>
 

@@ -10,8 +10,7 @@ export const CustomFieldType = {
   Boolean: 6,
   Text: 7,
 } as const
-export type CustomFieldType =
-  (typeof CustomFieldType)[keyof typeof CustomFieldType]
+export type CustomFieldType = (typeof CustomFieldType)[keyof typeof CustomFieldType]
 
 export const customFieldSchema = z
   .object({
@@ -49,7 +48,7 @@ export const entityWithCustomFieldsSchema = z.object({
       is_required: z.boolean(),
       is_array: z.boolean(),
       valid_values: z.array(z.string()).nullable(),
-    })
+    }),
   ),
 })
 export type EntityWithCustomFields = z.infer<

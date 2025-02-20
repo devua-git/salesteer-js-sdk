@@ -1,13 +1,7 @@
-import type {
-  Cart,
-  CartCreateRequest,
-  CartSetAddressRequest,
-  CartSyncRequest,
-  CartUpdateRequest,
-} from './cart.types'
 import { z } from 'zod'
 import { BaseResource } from '../../../resource'
 import { parseWithFallbackAsync } from '../../../utils/validation'
+import type { Cart, CartCreateRequest, CartSetAddressRequest, CartSyncRequest, CartUpdateRequest } from './cart.types'
 import { cartSchema } from './cart.types'
 
 export class CartResource extends BaseResource {

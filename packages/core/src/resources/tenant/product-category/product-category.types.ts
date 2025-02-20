@@ -1,8 +1,5 @@
 import { z } from 'zod'
-import {
-  makePaginateSchema,
-  objectWithTimestamps,
-} from '../../../utils/validation'
+import { makePaginateSchema, objectWithTimestamps } from '../../../utils/validation'
 
 export const productCategorySchema = z
   .object({
@@ -14,23 +11,24 @@ export const productCategorySchema = z
 export type ProductCategory = z.infer<typeof productCategorySchema>
 
 export const productCategoryPaginateSchema = makePaginateSchema(
-  productCategorySchema
+  productCategorySchema,
 )
 
 const baseProductCategoryTreeNodeSchema = z.object({
   id: z.coerce.number(),
 })
 
-export type ProductCategoryTreeNode = z.infer<
-  typeof baseProductCategoryTreeNodeSchema
-> & {
-  children: ProductCategoryTreeNode[]
-}
+export type ProductCategoryTreeNode =
+  & z.infer<
+    typeof baseProductCategoryTreeNodeSchema
+  >
+  & {
+    children: ProductCategoryTreeNode[]
+  }
 
-const productCategoryTreeNodeSchema: z.ZodType<ProductCategoryTreeNode> =
-  baseProductCategoryTreeNodeSchema.extend({
-    children: z.lazy(() => productCategoryTreeNodeSchema.array()),
-  })
+const productCategoryTreeNodeSchema: z.ZodType<ProductCategoryTreeNode> = baseProductCategoryTreeNodeSchema.extend({
+  children: z.lazy(() => productCategoryTreeNodeSchema.array()),
+})
 
 export const categoryTreesResponseSchema = z.object({
   categories: z.array(
@@ -38,8 +36,8 @@ export const categoryTreesResponseSchema = z.object({
       z.object({
         root: z.coerce.boolean(),
         children: z.array(z.coerce.number()),
-      })
-    )
+      }),
+    ),
   ),
 
   categories_trees: z.array(productCategoryTreeNodeSchema),

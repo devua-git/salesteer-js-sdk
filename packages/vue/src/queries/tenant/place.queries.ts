@@ -1,8 +1,8 @@
-import { useQuery, useQueryClient, useMutation } from '@tanstack/vue-query'
-import { reactive, type Ref } from 'vue'
 import type { PaginateQueryParams } from '@salesteer/core'
-import { BaseResourceQueries } from '../../resource-queries'
+import { useMutation, useQuery, useQueryClient } from '@tanstack/vue-query'
+import { reactive, type Ref } from 'vue'
 import { QUERY_PREFIX } from '../../client'
+import { BaseResourceQueries } from '../../resource-queries'
 import { UserQueries } from './user.queries'
 
 export class PlaceQueries extends BaseResourceQueries {
@@ -10,8 +10,7 @@ export class PlaceQueries extends BaseResourceQueries {
     all: () => [QUERY_PREFIX, 'places'] as const,
     lists: () => [...this.keys.all(), 'list'] as const,
     list: (params: unknown) => [...this.keys.lists(), params] as const,
-    autocomplete: (query: Ref<string>) =>
-      [...this.keys.all(), 'autocomplete', query] as const,
+    autocomplete: (query: Ref<string>) => [...this.keys.all(), 'autocomplete', query] as const,
   } as const
 
   useList = (params?: Ref<PaginateQueryParams>) => {
@@ -33,7 +32,7 @@ export class PlaceQueries extends BaseResourceQueries {
             queryKey: UserQueries.keys.managedCustomers(),
           })
 
-          //TODO
+          // TODO
           // queryClient.invalidateQueries({
           //   queryKey: CustomerService.keys.detail(place.placeable_id),
           // })
@@ -41,7 +40,7 @@ export class PlaceQueries extends BaseResourceQueries {
           //   queryKey: personQueryKeys.detail(place.placeable_id),
           // })
         },
-      })
+      }),
     )
   }
 
@@ -57,7 +56,7 @@ export class PlaceQueries extends BaseResourceQueries {
             queryKey: UserQueries.keys.managedCustomers(),
           })
 
-          //TODO
+          // TODO
           // queryClient.invalidateQueries({
           //   queryKey: CustomerService.keys.detail(place.placeable_id),
           // })
@@ -65,7 +64,7 @@ export class PlaceQueries extends BaseResourceQueries {
           //   queryKey: personQueryKeys.detail(place.placeable_id),
           // })
         },
-      })
+      }),
     )
   }
 
@@ -81,7 +80,7 @@ export class PlaceQueries extends BaseResourceQueries {
             queryKey: UserQueries.keys.managedCustomers(),
           })
 
-          //TODO
+          // TODO
           // queryClient.invalidateQueries({
           //   queryKey: CustomerService.keys.detail(place.placeable_id),
           // })
@@ -89,7 +88,7 @@ export class PlaceQueries extends BaseResourceQueries {
           //   queryKey: personQueryKeys.detail(place.placeable_id),
           // })
         },
-      })
+      }),
     )
   }
 
@@ -104,7 +103,7 @@ export class PlaceQueries extends BaseResourceQueries {
     return reactive(
       useMutation({
         mutationFn: this.getClient().place.autocompleteCreate,
-      })
+      }),
     )
   }
 }

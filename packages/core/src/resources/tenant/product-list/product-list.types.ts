@@ -1,8 +1,5 @@
 import { z } from 'zod'
-import {
-  makePaginateSchema,
-  objectWithTimestamps,
-} from '../../../utils/validation'
+import { makePaginateSchema, objectWithTimestamps } from '../../../utils/validation'
 import { customerSchema } from '../customer/customer.types'
 import { productSchema } from '../product/product.types'
 import { hasSaleSchema } from '../tax/tax.types'
@@ -34,12 +31,12 @@ export const productListProductSchema = productSchema.and(
       product_id: z.coerce.number(),
       product_list_id: z.coerce.number(),
     })
-    .and(hasSaleSchema)
+    .and(hasSaleSchema),
 )
 export type ProductListProduct = z.infer<typeof productListProductSchema>
 
 export const productListProductPaginateSchema = makePaginateSchema(
-  productListProductSchema
+  productListProductSchema,
 )
 export type PaginateProductListProduct = z.infer<
   typeof productListProductPaginateSchema
@@ -55,11 +52,11 @@ export const inProductListProductSchema = productSchema.and(
         product_list_id: z.coerce.number(),
       })
       .and(hasSaleSchema),
-  })
+  }),
 )
 export type InProductListProduct = z.infer<typeof inProductListProductSchema>
 export const inProductListProductPaginateSchema = makePaginateSchema(
-  inProductListProductSchema
+  inProductListProductSchema,
 )
 export type PaginateInProductListProduct = z.infer<
   typeof inProductListProductPaginateSchema

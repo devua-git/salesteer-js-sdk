@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/vue-query'
 import type { Ref } from 'vue'
-import { BaseResourceQueries } from '../../resource-queries'
 import { QUERY_PREFIX } from '../../client'
+import { BaseResourceQueries } from '../../resource-queries'
 
 export class TermQueries extends BaseResourceQueries {
   static keys = {

@@ -1,10 +1,7 @@
 import { BaseResource } from '../../../resource'
-import { parseWithFallbackAsync } from '../../../utils/validation'
 import type { PaginateQueryParams } from '../../../utils/pagination'
-import type {
-  CustomerCreateRequest,
-  CustomerUpdateRequest,
-} from './customer.types'
+import { parseWithFallbackAsync } from '../../../utils/validation'
+import type { CustomerCreateRequest, CustomerUpdateRequest } from './customer.types'
 import { customerPaginateSchema, customerSchema } from './customer.types'
 
 export class CustomerResource extends BaseResource {
