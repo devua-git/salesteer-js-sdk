@@ -3,40 +3,36 @@
   "namespace": "@salesteer",
   "author": "",
   "private": false,
-  "packageManager": "pnpm@9.13.2",
+  "packageManager": "pnpm@10.4.1",
   "type": "module",
   "version": "0.0.1",
   "license": "MIT",
   "scripts": {
     "clean": "pnpm --filter \"./packages/**\" run clean",
-    "prepare": "husky",
     "build": "nx reset && nx affected --target=build --exclude=examples/**",
     "build:all": "nx reset && nx run-many --target=build --exclude=examples/**",
     "watch": "pnpm run build:all && nx watch --all -- pnpm run build:all",
     "dev": "pnpm run watch",
+    "format": "dprint fmt",
+    "lint": "DEBUG=eslint:eslint TIMING=1 eslint . --cache",
+    "lint:fix": "DEBUG=eslint:eslint TIMING=1 eslint . --fix --quiet --cache",
     "cipublish": "node scripts/publish.js"
   },
   "devDependencies": {
-    "@nx/js": "20.1.1",
-    "@tanstack/config": "^0.14.0",
-    "esbuild-plugin-file-path-extensions": "^2.1.3",
-    "eslint": "^9.14.0",
-    "eslint-config-prettier": "^9.1.0",
-    "eslint-import-resolver-typescript": "^3.6.3",
-    "eslint-plugin-import": "^2.31.0",
-    "eslint-plugin-json": "^4.0.1",
-    "eslint-plugin-prettier": "^5.2.1",
-    "eslint-plugin-simple-import-sort": "^12.1.1",
-    "eslint-plugin-tailwindcss": "^3.17.5",
-    "eslint-plugin-vue": "^9.31.0",
-    "husky": "^9.1.6",
-    "lint-staged": "^15.2.10",
-    "nx": "20.1.1",
-    "prettier": "^3.3.3",
+    "@nx/js": "20.4.5",
+    "@tanstack/config": "^0.16.2",
+    "@vue/eslint-config-typescript": "^14.4.0",
+    "dprint": "^0.49.0",
+    "esbuild-plugin-file-path-extensions": "^2.1.4",
+    "eslint": "^9.20.1",
+    "eslint-plugin-tailwindcss": "^3.18.0",
+    "eslint-plugin-vue": "^9.32.0",
+    "nx": "20.4.5",
+    "prettier": "^3.5.1",
     "rimraf": "^6.0.1",
-    "tsup": "^8.3.5",
-    "typescript": "^5.6.3",
-    "typescript-eslint": "^8.14.0"
+    "tsup": "^8.3.6",
+    "typescript": "^5.7.3",
+    "typescript-eslint": "^8.24.1"
   },
   "workspaces": [
     "packages/*"
@@ -49,5 +45,11 @@
   "bugs": {
     "url": "https://github.com/devua-git/salesteer-js-sdk/issues"
   },
-  "homepage": "https://github.com/devua-git/salesteer-js-sdk#readme"
+  "homepage": "https://github.com/devua-git/salesteer-js-sdk#readme",
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild",
+      "vue-demi"
+    ]
+  }
 }
