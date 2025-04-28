@@ -40,7 +40,7 @@ export const orderSchema = z
       customer: z
         .object({
           id: z.coerce.number(),
-          nominative: z.string(),
+          fullname: z.string(),
           type: z.nativeEnum(CustomerType),
         })
         .and(
