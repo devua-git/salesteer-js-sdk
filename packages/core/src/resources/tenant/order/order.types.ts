@@ -36,7 +36,16 @@ export const orderSchema = z
           ),
         })
         .and(hasAmountsSchema),
-
+      payments: z.array(z.object({
+        id: z.coerce.number(),
+        stripe_id: z.string(),
+        status: z.coerce.number(),
+        amount_total: z.coerce.number(),
+        payable_type: z.string(),
+        payable_id : z.coerce.number(),
+        created_at : zodDatetime,
+        updated_at : zodDatetime.nullable(),
+      })),
       customer: z
         .object({
           id: z.coerce.number(),
