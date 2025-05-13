@@ -60,6 +60,7 @@ export const orderSchema = z
               last_name: z.string().nullable(),
               vat_number: z.string(),
               tax_code: z.string().nullable(),
+              is_person: z.literal(false),
             })
             .or(
               z.object({
@@ -68,6 +69,7 @@ export const orderSchema = z
                 last_name: z.string().nullable(),
                 vat_number: z.string().nullable(),
                 tax_code: z.string(),
+                is_person: z.literal(true),
               }),
             ),
         ),

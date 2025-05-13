@@ -8,7 +8,6 @@ export const CustomerType = {
   Prospect: 1, // 0001
   Account: 2, // 0010
   Supplier: 4, // 0100
-  Person: 8, // 0100
 } as const
 export type CustomerType = (typeof CustomerType)[keyof typeof CustomerType]
 
@@ -32,6 +31,7 @@ export const customerSchema = z
 
     type: z.nativeEnum(CustomerType),
 
+    is_person: z.coerce.boolean(),
     company_name: z.string().nullable(),
     vat_number: z.string().nullable(),
     tax_code: z.string().nullable(),
