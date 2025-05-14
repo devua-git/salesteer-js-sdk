@@ -51,6 +51,7 @@ export const orderSchema = z
           id: z.coerce.number(),
           fullname: z.string(),
           type: z.nativeEnum(CustomerType),
+          sdi_code: z.string().nullable(),
         })
         .and(
           z
